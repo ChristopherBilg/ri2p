@@ -42,7 +42,7 @@ jobs:
       - uses: mbrobbel/rustfmt-check@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          args: -- --check
+          args: --check
   clippy:
     runs-on: ubuntu-latest
     steps:
@@ -55,4 +55,4 @@ jobs:
       - uses: actions-rs/clippy-check@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          args: -- -D warnings
+          args: -D warnings
