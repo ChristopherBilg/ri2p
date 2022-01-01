@@ -8,6 +8,9 @@ Rust implementation of the i2p client/server/router protocols
 - `cargo run`: Runs the ri2p binary
 - `cargo test`: Runs all test functions, in the ./tests directory, that contain the #[test] attribute
 
+- `cargo fmt`: Standard formatter for Rust codestyle
+- `cargo clippy [--fix]`: Standard linter for Rust
+
 - `mdbook build`: Builds the ri2p mdbook locally
 - `mdbook serve`: Serves the ri2p mdbook at http://localhost:3000, and rebuilds it on changes
 
