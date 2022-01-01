@@ -13,7 +13,7 @@ Rust implementation of the i2p client/server/router protocols
 
 ## CI/CD Information
 
-GitHub is the central CI/CD platform for the ri2p project. CI/CD will occur only when modifications are made (pushes / merges) to the **master** branch.
+GitHub is the central CI/CD platform for the ri2p project. CI/CD will occur only when modifications are made (pull-requests) to the **master** branch.
 
 ## Additional Important Information
 
