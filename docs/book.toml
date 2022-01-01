@@ -1,0 +1,6 @@
+[book]
+authors = ["Christopher R. Bilger"]
+language = "en"
+multilingual = false
+src = "src"
+title = "ri2p Documentation"
