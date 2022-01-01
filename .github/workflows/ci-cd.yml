@@ -8,8 +8,6 @@ on:
     branches:
     - master
 
-components: rustfmt, clippy
-
 jobs:
   build:
     runs-on: ubuntu-latest
