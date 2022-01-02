@@ -1,8 +1,17 @@
 [package]
 name = "ri2p"
+description = "Rust implementation of the i2p client/server/router protocols"
 version = "0.1.0"
+license = "MIT"
+license-file = "LICENSE"
+authors = [ "AUTHORS.md" ]
+readme = "README.md"
 edition = "2021"
+homepage = "https://github.com/ChristopherBilg/ri2p"
+repository = "https://github.com/ChristopherBilg/ri2p"
+documentation = "https://chrisbilger.com/ri2p"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[[bin]]
+name = "ri2p"
 
 [dependencies]

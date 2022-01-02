@@ -1,5 +1,5 @@
 [book]
-authors = ["Christopher R. Bilger"]
+authors = [ "../AUTHORS.md" ]
 language = "en"
 multilingual = false
 src = "src"
