@@ -5,6 +5,7 @@ Rust implementation of the i2p client/server/router protocols
 ## Status
 
 ![ci-cd](https://github.com/ChristopherBilg/ri2p/actions/workflows/ci-cd.yml/badge.svg)
+![mdBook](https://github.com/ChristopherBilg/ri2p/actions/workflows/gh-pages.yml/badge.svg)
 
 ## Common Commands
 
