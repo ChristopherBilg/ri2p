@@ -28,3 +28,7 @@ GitHub is the central CI/CD platform for the ri2p project. CI/CD will occur only
 - [Contributing Guidelines](./CONTRIBUTING.md)
 - [Open Source License](./LICENSE)
 - [To-Do Tasks](./TODO.md)
+
+## Developers
+
+If you would like to work on this project, please feel free to check the [ri2p Project Kanban board](https://github.com/ChristopherBilg/ri2p/projects/1) for a list of the current items that we need to be worked on. If you would like to work on any of them, please contact ri2p in the [discussions](https://github.com/ChristopherBilg/ri2p/discussions) area and I will mark a task for you.
