@@ -12,11 +12,13 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - uses: actions/checkout@v2
-      - name: Build mdBook
+      - name: Build mdBook and cargo doc
         uses: peaceiris/actions-mdbook@v1
         with:
           mdbook-version: 'latest'
-      - run: mdbook build docs/
+      - run: |
+          mdbook build docs/
+          cargo doc --target-dir ./docs/doc
       - name: Deploy mdBook to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
