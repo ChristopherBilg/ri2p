@@ -12,14 +12,22 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - uses: actions/checkout@v2
-      - name: Build mdBook and cargo doc
+      - name: Build mdBook
         uses: peaceiris/actions-mdbook@v1
         with:
           mdbook-version: 'latest'
-      - run: |
-          mdbook build docs/
-          cargo doc --target-dir ./docs/doc
-      - name: Deploy mdBook to GitHub Pages
+      - run: mdbook build docs/
+      - uses: actions/checkout@v2
+      - name: Build cargo doc
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+      - uses: actions-rs/cargo@v1
+        with:
+          command: doc
+          override: true
+          args: --target-dir ./docs/book/doc
+      - name: Deploy mdBook and cargo doc to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
