@@ -7,3 +7,5 @@ ri2p is written in the Rust systems programming language in order to gain the be
 This website is created using the mdBooks Rust crate, and allows documentation to be transpiled from Markdown to static HTML.
 
 There is another portion of the documentation website, located at [chrisbilger.com/ri2p/doc/doc/ri2p](https://chrisbilger.com/ri2p/doc/doc/ri2p/), that is built from Rust's native `cargo doc` feature. That portion of the documentation is for other developers to quickly read about the Rust codebase for ri2p.
+
+Click [here](https://github.com/ChristopherBilg/ri2p/) to quickly go to the ri2p Git repository.
