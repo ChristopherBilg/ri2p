@@ -28,7 +28,7 @@ GitHub is the central CI/CD platform for the ri2p project. CI/CD will occur only
 
 - [Code of Conduct Guidelines](./CODE_OF_CONDUCT.md)
 - [Contributing Guidelines](./CONTRIBUTING.md)
-- [Open Source License](./LICENSE)
+- [Open Source License](./LICENSE.md)
 - [Security (Vulnerability) Policy](./SECURITY.md)
 - [Major Authors & Contributors](./AUTHORS.md)
 - [Changelog (SemVer & Timestamps)](./CHANGELOG.md)
