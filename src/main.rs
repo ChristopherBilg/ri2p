@@ -27,7 +27,7 @@ fn main() {
             error!("Failed to initialize logger.");
             error!("{}", error.to_string());
             std::process::exit(1);
-        },
+        }
     };
 
     // Parse the derived program arguments (CLI)
@@ -41,24 +41,24 @@ fn main() {
         Ok(data) => {
             info!("Successfully read configuration Toml file.");
             data
-        },
+        }
         Err(error) => {
             error!("Failed to read configuration Toml file.");
             error!("{}", error.to_string());
             std::process::exit(1);
-        },
+        }
     };
 
     let _config: Config = match toml::from_str(&config_toml_data) {
         Ok(data) => {
             info!("Successfully parsed configuration Toml file.");
             data
-        },
+        }
         Err(error) => {
             error!("Failed to parse configuration Toml file.");
             error!("{}", error.to_string());
             std::process::exit(1);
-        },
+        }
     };
 
     // Initialize and start daemon
