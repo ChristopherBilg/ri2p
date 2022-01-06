@@ -2,22 +2,7 @@ mod daemon;
 
 use clap::Parser;
 use log::{error, info};
-use serde_derive::{Deserialize, Serialize};
 use std::fs;
-use toml;
-
-#[derive(Parser)]
-#[clap(about, version, author)]
-struct ProgramArguments {
-    /// The filename for ri2p configurations
-    #[clap(short, long, default_value = ".ri2p.config.toml")]
-    config_filename: String,
-}
-
-#[derive(Deserialize, Serialize)]
-struct Config {
-    hostname: String,
-}
 
 fn main() {
     // Initialize the logger utility
@@ -31,7 +16,7 @@ fn main() {
     };
 
     // Parse the derived program arguments (CLI)
-    let program_args = ProgramArguments::parse();
+    let program_args = daemon::program_arguments::ProgramArguments::parse();
     info!("Successfully parsed program arguments.");
 
     // Load in configuration files
@@ -39,30 +24,30 @@ fn main() {
 
     let config_toml_data = match fs::read_to_string(config_toml_filename) {
         Ok(data) => {
-            info!("Successfully read configuration Toml file.");
+            info!("Successfully read configuration file.");
             data
         }
         Err(error) => {
-            error!("Failed to read configuration Toml file.");
+            error!("Failed to read configuration file.");
             error!("{}", error.to_string());
             std::process::exit(1);
         }
     };
 
-    let _config: Config = match toml::from_str(&config_toml_data) {
+    let config: daemon::config::Config = match toml::from_str(&config_toml_data) {
         Ok(data) => {
-            info!("Successfully parsed configuration Toml file.");
+            info!("Successfully parsed configuration file.");
             data
         }
         Err(error) => {
-            error!("Failed to parse configuration Toml file.");
+            error!("Failed to parse configuration file.");
             error!("{}", error.to_string());
             std::process::exit(1);
         }
     };
 
     // Initialize and start daemon
-    let daemon = daemon::daemon::Daemon;
+    let daemon = daemon::daemon::Daemon { config };
 
     if daemon.initialize() {
         info!("Successfully initialized daemon.");
