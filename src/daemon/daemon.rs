@@ -1,4 +1,4 @@
-use super::config::Config;
+use crate::daemon::config::Config;
 
 pub struct Daemon {
     pub config: Config,
