@@ -1,4 +1,8 @@
-pub struct Daemon;
+use super::config::Config;
+
+pub struct Daemon {
+    pub config: Config,
+}
 
 impl Daemon {
     pub fn initialize(&self) -> bool {
