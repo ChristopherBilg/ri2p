@@ -8,7 +8,7 @@ readme = "README.md"
 edition = "2021"
 homepage = "https://github.com/ChristopherBilg/ri2p"
 repository = "https://github.com/ChristopherBilg/ri2p"
-documentation = "https://chrisbilger.com/ri2p"
+documentation = "https://ri2p.com"
 
 [[bin]]
 name = "ri2p"
