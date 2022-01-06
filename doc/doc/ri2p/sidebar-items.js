@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["main",""]],"mod":[["daemon",""]],"struct":[["Config",""],["ProgramArguments",""]]});
+initSidebarItems({"fn":[["main",""]],"mod":[["daemon",""]]});

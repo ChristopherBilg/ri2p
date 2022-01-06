@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["daemon",""]]});
+initSidebarItems({"mod":[["config",""],["daemon",""],["program_arguments",""]]});
