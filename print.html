@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="netdb.html"><strong aria-hidden="true">2.</strong> NetDB</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -144,6 +144,10 @@
 <p>This website is created using the mdBooks Rust crate, and allows documentation to be transpiled from Markdown to static HTML.</p>
 <p>There is another portion of the documentation website, located at <a href="https://ri2p.com/doc/doc/ri2p/">ri2p.com/doc/doc/ri2p</a>, that is built from Rust's native <code>cargo doc</code> feature. That portion of the documentation is for other developers to quickly read about the Rust codebase for ri2p.</p>
 <p>Click <a href="https://github.com/ChristopherBilg/ri2p/">here</a> to quickly go to the ri2p Git repository.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="netdb"><a class="header" href="#netdb">NetDB</a></h1>
+<p>The i2p networking database (NetDB) is a specialized distributed database, also known as a <a href="https://en.wikipedia.org/wiki/Distributed_hash_table">distributed hash table</a> (DHT).</p>
+<p>All data that lives inside of the NetDB must be cryptographically signed and all data that is retrieved from the NetDB must be cryptographically verified for authenticity. This data also has information regarding the timeframe that it is healthy to be inside of the database.</p>
+<p>The NetDb is distributed using a &quot;floodfill&quot;. A portion of all i2p routers, aptly named &quot;floodfill routers&quot;, maintain the NetDB DHT.</p>
 
                     </main>
 

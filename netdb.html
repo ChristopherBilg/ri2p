@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Introduction - ri2p Documentation</title>
+        <title>NetDB - ri2p Documentation</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="netdb.html"><strong aria-hidden="true">2.</strong> NetDB</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="netdb.html" class="active"><strong aria-hidden="true">2.</strong> NetDB</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -113,7 +113,7 @@
                         <a href="https://github.com/ChristopherBilg/ri2p" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        <a href="https://github.com/ChristopherBilg/ri2p/edit/master/docs/src/introduction.md" title="Suggest an edit" aria-label="Suggest an edit">
+                        <a href="https://github.com/ChristopherBilg/ri2p/edit/master/docs/src/netdb.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
                     </div>
@@ -140,19 +140,17 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
-<p>ri2p (Rust-i2p) is a free and open source project that aims to implement the <a href="https://geti2p.net/spec">i2p Specifications</a> in a minimal, lightweight and memory safe program.</p>
-<p>ri2p is written in the Rust systems programming language in order to gain the benefits that Rust provides such as; memory management, memory and type safety, systems-level performance, native cross-compiling support, and an easy-to-use dependency (package) <a href="https://crates.io/">registry</a>.</p>
-<p>This website is created using the mdBooks Rust crate, and allows documentation to be transpiled from Markdown to static HTML.</p>
-<p>There is another portion of the documentation website, located at <a href="https://ri2p.com/doc/doc/ri2p/">ri2p.com/doc/doc/ri2p</a>, that is built from Rust's native <code>cargo doc</code> feature. That portion of the documentation is for other developers to quickly read about the Rust codebase for ri2p.</p>
-<p>Click <a href="https://github.com/ChristopherBilg/ri2p/">here</a> to quickly go to the ri2p Git repository.</p>
+                        <h1 id="netdb"><a class="header" href="#netdb">NetDB</a></h1>
+<p>The i2p networking database (NetDB) is a specialized distributed database, also known as a <a href="https://en.wikipedia.org/wiki/Distributed_hash_table">distributed hash table</a> (DHT).</p>
+<p>All data that lives inside of the NetDB must be cryptographically signed and all data that is retrieved from the NetDB must be cryptographically verified for authenticity. This data also has information regarding the timeframe that it is healthy to be inside of the database.</p>
+<p>The NetDb is distributed using a &quot;floodfill&quot;. A portion of all i2p routers, aptly named &quot;floodfill routers&quot;, maintain the NetDB DHT.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="next" href="netdb.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                            <a rel="prev" href="introduction.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
                             </a>
                         <div style="clear: both"></div>
                     </nav>
@@ -160,8 +158,8 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="next" href="netdb.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                    <a rel="prev" href="introduction.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
                     </a>
             </nav>
 
