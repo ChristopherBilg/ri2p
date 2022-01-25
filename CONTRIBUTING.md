@@ -47,7 +47,7 @@ People *love* thorough bug reports. I'm not even kidding.
 
 ## Use a Consistent Coding Style
 
-We use [rustfmt](https://github.com/rust-lang/rustfmt) for all Rust code.
+We use [rustfmt](https://github.com/rust-lang/rustfmt) and [clippy](https://github.com/rust-lang/rust-clippy) for all Rust code.
 
 ## License
 
