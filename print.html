@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="netdb.html"><strong aria-hidden="true">2.</strong> NetDB</a></li><li class="chapter-item expanded "><a href="i2np.html"><strong aria-hidden="true">3.</strong> I2NP</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="netdb.html"><strong aria-hidden="true">2.</strong> NetDB</a></li><li class="chapter-item expanded "><a href="i2np.html"><strong aria-hidden="true">3.</strong> I2NP</a></li><li class="chapter-item expanded "><a href="transports/index.html"><strong aria-hidden="true">4.</strong> Transports</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="transports/ssu.html"><strong aria-hidden="true">4.1.</strong> SSU</a></li><li class="chapter-item expanded "><a href="transports/ntcp2.html"><strong aria-hidden="true">4.2.</strong> NTCP2</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -165,6 +165,42 @@
 <ol>
 <li><a href="https://geti2p.net/en/docs/protocol/i2np">geti2p.net I2NP Protocol Documentation</a></li>
 <li><a href="https://geti2p.net/spec/i2np">geti2p.net I2NP Technical Specification</a></li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="transports"><a class="header" href="#transports">Transports</a></h1>
+<blockquote>
+<p>&quot;A &quot;transport&quot; in I2P is a method for direct, point-to-point communication between two routers. Transports must provide confidentiality and integrity against external adversaries while authenticating that the router contacted is the one who should receive a given message.&quot; [1]</p>
+</blockquote>
+<p>ri2p supports multiple transports simultaneously. These are the two transports currently supported:</p>
+<ul>
+<li><a href="transports/./ssu.html">Secure Semireliable UDP (SSU)</a></li>
+<li><a href="transports/./ntcp2.html">NIO Transmission Control Protocol (NTCP2)</a></li>
+</ul>
+<h2 id="supplemental-information-2"><a class="header" href="#supplemental-information-2">Supplemental Information</a></h2>
+<ol>
+<li><a href="https://geti2p.net/en/docs/transport">geti2p.net Transports in I2P</a></li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ssu"><a class="header" href="#ssu">SSU</a></h1>
+<p>Secure Semireliable UDP (SSU) is a transport layer, for UDP messages, that is: &quot;secured&quot; via end-to-end encryption, and &quot;semireliable&quot; via unacknowledged message retransmissions.</p>
+<blockquote>
+<p>Like the NTCP transport, SSU provides reliable, encrypted, connection-oriented, point-to-point data transport. Unique to SSU, it also provides IP detection and NAT traversal services, including:</p>
+<ul>
+<li>Cooperative NAT/Firewall traversal using introducers</li>
+<li>Local IP detection by inspection of incoming packets and peer testing</li>
+<li>Communication of firewall status and local IP, and changes to either to NTCP</li>
+<li>Communication of firewall status and local IP, and changes to either, to the router and the user interface</li>
+</ul>
+<p>[1]</p>
+</blockquote>
+<h2 id="supplemental-information-3"><a class="header" href="#supplemental-information-3">Supplemental Information</a></h2>
+<ol>
+<li><a href="https://geti2p.net/en/docs/transport/ssu">geti2p.net SSU Transport Documentation</a></li>
+<li><a href="https://geti2p.net/spec/ssu">geti2p.net SSU Technical Specification</a></li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ntcp2"><a class="header" href="#ntcp2">NTCP2</a></h1>
+<p>XXXX</p>
+<h2 id="supplemental-information-4"><a class="header" href="#supplemental-information-4">Supplemental Information</a></h2>
+<ol>
+<li><a href="transports/ntcp2.html#">YYYY</a></li>
 </ol>
 
                     </main>
