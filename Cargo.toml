@@ -14,7 +14,7 @@ documentation = "https://ri2p.com"
 name = "ri2p"
 
 [dependencies]
-clap = { version = "3.0.4", features = ["derive"] }
+clap = { version = "3.0.13", features = ["derive"] }
 env_logger = "0.9.0"
 log = "0.4.14"
 serde = "1.0.133"
