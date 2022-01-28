@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="netdb.html"><strong aria-hidden="true">2.</strong> NetDB</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="netdb.html"><strong aria-hidden="true">2.</strong> NetDB</a></li><li class="chapter-item expanded "><a href="i2np.html"><strong aria-hidden="true">3.</strong> I2NP</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -148,6 +148,24 @@
 <p>The i2p networking database (NetDB) is a specialized distributed database, also known as a <a href="https://en.wikipedia.org/wiki/Distributed_hash_table">distributed hash table</a> (DHT).</p>
 <p>All data that lives inside of the NetDB must be cryptographically signed and all data that is retrieved from the NetDB must be cryptographically verified for authenticity. This data also has information regarding the timeframe that it is healthy to be inside of the database.</p>
 <p>The NetDb is distributed using a &quot;floodfill&quot;. A portion of all i2p routers, aptly named &quot;floodfill routers&quot;, maintain the NetDB DHT.</p>
+<h2 id="supplemental-information"><a class="header" href="#supplemental-information">Supplemental Information</a></h2>
+<ol>
+<li><a href="https://geti2p.net/en/docs/how/network-database">geti2p.net NetDB Overview Documentation</a></li>
+<li><a href="https://geti2p.net/en/docs/discussions/netdb">geti2p.net NetDB Historical Discussion</a></li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="i2np"><a class="header" href="#i2np">I2NP</a></h1>
+<p>The Invisible Internet Network Protocol (I2NP) is a networking layer that resides above the I2P Transport Protocol layer. The I2NP layer manages the routing of inter-router communications, as well as self determining which transport protocol to use if there are multiple transport protocols to choose from.</p>
+<blockquote>
+<p>&quot;I2NP (I2P Network Protocol) messages can be used for one-hop, router-to-router, point-to-point messages. By encrypting and wrapping messages in other messages, they can be sent in a secure way through multiple hops to the ultimate destination.&quot; [1]</p>
+</blockquote>
+<blockquote>
+<p>&quot;All routers must publish their I2NP protocol version in the &quot;router.version&quot; field in the RouterInfo properties. This version field is the API version, indiciating the level of support for various I2NP protocol features, and is not necessarily the actual router version.&quot; [2]</p>
+</blockquote>
+<h2 id="supplemental-information-1"><a class="header" href="#supplemental-information-1">Supplemental Information</a></h2>
+<ol>
+<li><a href="https://geti2p.net/en/docs/protocol/i2np">geti2p.net I2NP Protocol Documentation</a></li>
+<li><a href="https://geti2p.net/spec/i2np">geti2p.net I2NP Technical Specification</a></li>
+</ol>
 
                     </main>
 
