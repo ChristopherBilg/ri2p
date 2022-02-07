@@ -8,7 +8,7 @@ set, this means that at least one argument from that group must be present. If
 <a href="struct.ArgGroup.html#method.multiple"><code>ArgGroup::multiple(false)</code></a> is set (the default), one and <em>only</em> one must be present.</p>
 <p>You can also do things such as name an entire <code>ArgGroup</code> as a <a href="struct.Arg.html#method.conflicts_with">conflict</a> or <a href="struct.Arg.html#method.requires">requirement</a> for
 another argument, meaning any of the arguments that belong to that group will cause a failure
-if present, or must present respectively.</p>
+if present, or must be present respectively.</p>
 <p>Perhaps the most common use of <code>ArgGroup</code>s is to require one and <em>only</em> one argument to be
 present out of a given set. Imagine that you had multiple arguments, and you want one of them
 to be required, but making all of them required isn’t feasible because perhaps they conflict
@@ -36,7 +36,7 @@ the arguments from the specified group is present at runtime.</p>
 <span class="comment">// Because we used two args in the group it&#39;s an error</span>
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
 <span class="kw">let</span> <span class="ident">err</span> <span class="op">=</span> <span class="ident">result</span>.<span class="ident">unwrap_err</span>();
-<span class="macro">assert_eq!</span>(<span class="ident">err</span>.<span class="ident">kind</span>, <span class="ident">ErrorKind::ArgumentConflict</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">err</span>.<span class="ident">kind</span>(), <span class="ident">ErrorKind::ArgumentConflict</span>);</code></pre></div>
 <p>This next example shows a passing parse of the same scenario</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;app&quot;</span>)
@@ -120,7 +120,7 @@ an error if more than one of the args in the group was used.</p>
 <span class="comment">// Because we used both args in the group it&#39;s an error</span>
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
 <span class="kw">let</span> <span class="ident">err</span> <span class="op">=</span> <span class="ident">result</span>.<span class="ident">unwrap_err</span>();
-<span class="macro">assert_eq!</span>(<span class="ident">err</span>.<span class="ident">kind</span>, <span class="ident">ErrorKind::ArgumentConflict</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">err</span>.<span class="ident">kind</span>(), <span class="ident">ErrorKind::ArgumentConflict</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.required" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg_group.rs.html#274-277" title="goto source code">[src]</a></div><a href="#method.required" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.required" class="fnname">required</a>(self, yes: <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.bool.html">bool</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Require an argument from the group to be present when parsing.</p>
 <p>This is unless conflicting with another argument.  A required group will be displayed in
 the usage string of the application in the format <code>&lt;arg|arg2|arg3&gt;</code>.</p>
@@ -145,7 +145,7 @@ states, ’<em>At least</em> one arg from this group must be used. Using multipl
 <span class="comment">// Because we didn&#39;t use any of the args in the group, it&#39;s an error</span>
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
 <span class="kw">let</span> <span class="ident">err</span> <span class="op">=</span> <span class="ident">result</span>.<span class="ident">unwrap_err</span>();
-<span class="macro">assert_eq!</span>(<span class="ident">err</span>.<span class="ident">kind</span>, <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">err</span>.<span class="ident">kind</span>(), <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.requires" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg_group.rs.html#314-317" title="goto source code">[src]</a></div><a href="#method.requires" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.requires" class="fnname">requires</a>&lt;T:&nbsp;Key&gt;(self, id: T) -&gt; Self</h4></div></summary><div class="docblock"><p>Specify an argument or group that must be present when this group is.</p>
 <p>This is not to be confused with a <a href="struct.ArgGroup.html#method.required">required group</a>. Requirement rules function just like
 <a href="struct.Arg.html#method.requires">argument requirement rules</a>, you can name other arguments or groups that must be present
@@ -169,7 +169,7 @@ when any one of the arguments from this group is used.</p>
 <span class="comment">// error</span>
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
 <span class="kw">let</span> <span class="ident">err</span> <span class="op">=</span> <span class="ident">result</span>.<span class="ident">unwrap_err</span>();
-<span class="macro">assert_eq!</span>(<span class="ident">err</span>.<span class="ident">kind</span>, <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">err</span>.<span class="ident">kind</span>(), <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.requires_all" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg_group.rs.html#356-361" title="goto source code">[src]</a></div><a href="#method.requires_all" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.requires_all" class="fnname">requires_all</a>(self, ns: <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.slice.html">&amp;[</a>&amp;'help <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.str.html">str</a><a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.slice.html">]</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Specify arguments or groups that must be present when this group is.</p>
 <p>This is not to be confused with a <a href="struct.ArgGroup.html#method.required">required group</a>. Requirement rules function just like
 <a href="struct.Arg.html#method.requires_all">argument requirement rules</a>, you can name other arguments or groups that must be present
@@ -195,7 +195,7 @@ when one of the arguments from this group is used.</p>
 <span class="comment">// yet we only used &quot;-d&quot; it&#39;s an error</span>
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
 <span class="kw">let</span> <span class="ident">err</span> <span class="op">=</span> <span class="ident">result</span>.<span class="ident">unwrap_err</span>();
-<span class="macro">assert_eq!</span>(<span class="ident">err</span>.<span class="ident">kind</span>, <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">err</span>.<span class="ident">kind</span>(), <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.conflicts_with" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg_group.rs.html#396-399" title="goto source code">[src]</a></div><a href="#method.conflicts_with" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.conflicts_with" class="fnname">conflicts_with</a>&lt;T:&nbsp;Key&gt;(self, id: T) -&gt; Self</h4></div></summary><div class="docblock"><p>Specify an argument or group that must <strong>not</strong> be present when this group is.</p>
 <p>Exclusion (aka conflict) rules function just like <a href="struct.Arg.html#method.conflicts_with">argument exclusion rules</a>, you can name
 other arguments or groups that must <em>not</em> be present when one of the arguments from this
@@ -218,7 +218,7 @@ group are used.</p>
 <span class="comment">// because we used an arg from the group, and the group conflicts with &quot;-d&quot;, it&#39;s an error</span>
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
 <span class="kw">let</span> <span class="ident">err</span> <span class="op">=</span> <span class="ident">result</span>.<span class="ident">unwrap_err</span>();
-<span class="macro">assert_eq!</span>(<span class="ident">err</span>.<span class="ident">kind</span>, <span class="ident">ErrorKind::ArgumentConflict</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">err</span>.<span class="ident">kind</span>(), <span class="ident">ErrorKind::ArgumentConflict</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.conflicts_with_all" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg_group.rs.html#437-442" title="goto source code">[src]</a></div><a href="#method.conflicts_with_all" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.conflicts_with_all" class="fnname">conflicts_with_all</a>(self, ns: <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.slice.html">&amp;[</a>&amp;'help <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.str.html">str</a><a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.slice.html">]</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Specify arguments or groups that must <strong>not</strong> be present when this group is.</p>
 <p>Exclusion rules function just like <a href="struct.Arg.html#method.conflicts_with_all">argument exclusion rules</a>, you can name other arguments
 or groups that must <em>not</em> be present when one of the arguments from this group are used.</p>
@@ -243,7 +243,7 @@ or groups that must <em>not</em> be present when one of the arguments from this 
 <span class="comment">// it&#39;s an error</span>
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
 <span class="kw">let</span> <span class="ident">err</span> <span class="op">=</span> <span class="ident">result</span>.<span class="ident">unwrap_err</span>();
-<span class="macro">assert_eq!</span>(<span class="ident">err</span>.<span class="ident">kind</span>, <span class="ident">ErrorKind::ArgumentConflict</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">err</span>.<span class="ident">kind</span>(), <span class="ident">ErrorKind::ArgumentConflict</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.with_name" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg_group.rs.html#446-448" title="goto source code">[src]</a></div><a href="#method.with_name" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.with_name" class="fnname">with_name</a>&lt;S:&nbsp;<a class="trait" href="https://doc.rust-lang.org/1.58.1/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;&amp;'help <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.str.html">str</a>&gt;&gt;(n: S) -&gt; Self</h4></div><div class="item-info"><div class="stab deprecated"><span class="emoji">👎</span> Deprecated since 3.0.0: <p>Replaced with <code>ArgGroup::new</code></p>
 </div></div></summary><div class="docblock"><p>Deprecated, replaced with <a href="struct.ArgGroup.html#method.new" title="ArgGroup::new"><code>ArgGroup::new</code></a></p>
 </div></details></div></details><h2 id="trait-implementations" class="small-section-header">Trait Implementations<a href="#trait-implementations" class="anchor"></a></h2><div id="trait-implementations-list"><details class="rustdoc-toggle implementors-toggle" open><summary><div id="impl-Clone" class="impl has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg_group.rs.html#619-631" title="goto source code">[src]</a></div><a href="#impl-Clone" class="anchor"></a><h3 class="code-header in-band">impl <a class="trait" href="https://doc.rust-lang.org/1.58.1/core/clone/trait.Clone.html" title="trait core::clone::Clone">Clone</a> for <a class="struct" href="struct.ArgGroup.html" title="struct clap::ArgGroup">ArgGroup</a>&lt;'_&gt;</h3></div></summary><div class="impl-items"><details class="rustdoc-toggle method-toggle" open><summary><div id="method.clone" class="method trait-impl has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg_group.rs.html#620-630" title="goto source code">[src]</a></div><a href="#method.clone" class="anchor"></a><h4 class="code-header">fn <a href="https://doc.rust-lang.org/1.58.1/core/clone/trait.Clone.html#tymethod.clone" class="fnname">clone</a>(&amp;self) -&gt; Self</h4></div></summary><div class='docblock'><p>Returns a copy of the value. <a href="https://doc.rust-lang.org/1.58.1/core/clone/trait.Clone.html#tymethod.clone">Read more</a></p>

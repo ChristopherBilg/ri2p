@@ -245,7 +245,7 @@ conjunction with this setting.</p>
         <span class="string">&quot;myprog&quot;</span>,
     ]);
 <span class="macro">assert!</span>(<span class="ident">err</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">err</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::MissingSubcommand</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">err</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::MissingSubcommand</span>);</code></pre></div>
 </div><h3 id="variant.SubcommandRequiredElseHelp" class="variant small-section-header"><a href="#variant.SubcommandRequiredElseHelp" class="anchor field"></a><code>SubcommandRequiredElseHelp</code></h3><div class="docblock"><p>Display help if no <a href="struct.App.html#method.subcommand"><code>subcommands</code></a> are present at runtime and exit gracefully (i.e. an
 empty run such as <code>$ myprog</code>).</p>
 <p><strong>NOTE:</strong> This should <em>not</em> be used with <a href="enum.AppSettings.html#variant.SubcommandRequired" title="AppSettings::SubcommandRequired"><code>AppSettings::SubcommandRequired</code></a> as they do
@@ -335,7 +335,7 @@ and yet receive no error so long as the user uses a valid subcommand instead.</p
         <span class="string">&quot;myprog&quot;</span>
     ]);
 <span class="macro">assert!</span>(<span class="ident">err</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">err</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">err</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
 <p>This next example shows that it is no longer error to not use a required argument if a
 valid subcommand is used.</p>
 
@@ -440,7 +440,7 @@ declared in, and not alphabetically which is the default.</p>
         <span class="string">&quot;myprog&quot;</span>, <span class="string">&quot;-h&quot;</span>
     ]);
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::UnknownArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::UnknownArgument</span>);</code></pre></div>
 </div><h3 id="variant.DisableHelpSubcommand" class="variant small-section-header"><a href="#variant.DisableHelpSubcommand" class="anchor field"></a><code>DisableHelpSubcommand</code></h3><div class="docblock"><p>Disables the <code>help</code> <a href="struct.App.html#method.subcommand"><code>subcommand</code></a>.</p>
 <h4 id="examples-21" class="section-header"><a href="#examples-21">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
@@ -452,7 +452,7 @@ declared in, and not alphabetically which is the default.</p>
         <span class="string">&quot;myprog&quot;</span>, <span class="string">&quot;help&quot;</span>
     ]);
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::UnknownArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::UnknownArgument</span>);</code></pre></div>
 </div><h3 id="variant.DisableVersionFlag" class="variant small-section-header"><a href="#variant.DisableVersionFlag" class="anchor field"></a><code>DisableVersionFlag</code></h3><div class="docblock"><p>Disables <code>-V</code> and <code>--version</code> flag.</p>
 <h4 id="examples-22" class="section-header"><a href="#examples-22">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;myprog&quot;</span>)
@@ -461,7 +461,7 @@ declared in, and not alphabetically which is the default.</p>
         <span class="string">&quot;myprog&quot;</span>, <span class="string">&quot;-V&quot;</span>
     ]);
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::UnknownArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::UnknownArgument</span>);</code></pre></div>
 </div><h3 id="variant.PropagateVersion" class="variant small-section-header"><a href="#variant.PropagateVersion" class="anchor field"></a><code>PropagateVersion</code></h3><div class="docblock"><p>Specifies to use the version of the current command for all <a href="struct.App.html#method.subcommand"><code>subcommands</code></a>.</p>
 <p>Defaults to <code>false</code>; subcommands have independent version strings from their parents.</p>
 <p><strong>Note:</strong> Make sure you apply it as <code>global_setting</code> if you want this setting

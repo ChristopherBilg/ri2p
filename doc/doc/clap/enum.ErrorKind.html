@@ -33,14 +33,14 @@ and the user provides a value which isn’t in that set.</p>
         .<span class="ident">possible_value</span>(<span class="string">&quot;slow&quot;</span>))
     .<span class="ident">try_get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;prog&quot;</span>, <span class="string">&quot;other&quot;</span>]);
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::InvalidValue</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::InvalidValue</span>);</code></pre></div>
 </div><h3 id="variant.UnknownArgument" class="variant small-section-header"><a href="#variant.UnknownArgument" class="anchor field"></a><code>UnknownArgument</code></h3><div class="docblock"><p>Occurs when a user provides a flag, option, argument or subcommand which isn’t defined.</p>
 <h4 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;prog&quot;</span>)
     .<span class="ident">arg</span>(<span class="macro">arg!</span>(<span class="op">-</span><span class="op">-</span><span class="ident">flag</span> <span class="string">&quot;some flag&quot;</span>))
     .<span class="ident">try_get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;prog&quot;</span>, <span class="string">&quot;--other&quot;</span>]);
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::UnknownArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::UnknownArgument</span>);</code></pre></div>
 </div><h3 id="variant.InvalidSubcommand" class="variant small-section-header"><a href="#variant.InvalidSubcommand" class="anchor field"></a><code>InvalidSubcommand</code></h3><div class="docblock"><p>Occurs when the user provides an unrecognized <a href="trait.Subcommand.html"><code>Subcommand</code></a> which meets the threshold for
 being similar enough to an existing subcommand.
 If it doesn’t meet the threshold, or the ‘suggestions’ feature is disabled,
@@ -54,7 +54,7 @@ the more general <a href="enum.ErrorKind.html#variant.UnknownArgument"><code>Unk
            .<span class="ident">index</span>(<span class="number">1</span>)))
    .<span class="ident">try_get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;prog&quot;</span>, <span class="string">&quot;confi&quot;</span>]);
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::InvalidSubcommand</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::InvalidSubcommand</span>);</code></pre></div>
 </div><h3 id="variant.UnrecognizedSubcommand" class="variant small-section-header"><a href="#variant.UnrecognizedSubcommand" class="anchor field"></a><code>UnrecognizedSubcommand</code></h3><div class="docblock"><p>Occurs when the user provides an unrecognized <a href="trait.Subcommand.html"><code>Subcommand</code></a> which either
 doesn’t meet the threshold for being similar enough to an existing subcommand,
 or the ‘suggestions’ feature is disabled.
@@ -70,7 +70,7 @@ subcommand. Otherwise, the more general <a href="enum.ErrorKind.html#variant.Unk
             .<span class="ident">index</span>(<span class="number">1</span>)))
     .<span class="ident">try_get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;prog&quot;</span>, <span class="string">&quot;help&quot;</span>, <span class="string">&quot;nothing&quot;</span>]);
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::UnrecognizedSubcommand</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::UnrecognizedSubcommand</span>);</code></pre></div>
 </div><h3 id="variant.EmptyValue" class="variant small-section-header"><a href="#variant.EmptyValue" class="anchor field"></a><code>EmptyValue</code></h3><div class="docblock"><p>Occurs when the user provides an empty value for an option that does not allow empty
 values.</p>
 <h4 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h4>
@@ -81,7 +81,7 @@ values.</p>
          .<span class="ident">long</span>(<span class="string">&quot;color&quot;</span>))
     .<span class="ident">try_get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;prog&quot;</span>, <span class="string">&quot;--color=&quot;</span>]);
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::EmptyValue</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::EmptyValue</span>);</code></pre></div>
 </div><h3 id="variant.NoEquals" class="variant small-section-header"><a href="#variant.NoEquals" class="anchor field"></a><code>NoEquals</code></h3><div class="docblock"><p>Occurs when the user doesn’t use equals for an option that requires equal
 sign to provide values.</p>
 
@@ -92,7 +92,7 @@ sign to provide values.</p>
          .<span class="ident">long</span>(<span class="string">&quot;color&quot;</span>))
     .<span class="ident">try_get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;prog&quot;</span>, <span class="string">&quot;--color&quot;</span>, <span class="string">&quot;red&quot;</span>]);
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::NoEquals</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::NoEquals</span>);</code></pre></div>
 </div><h3 id="variant.ValueValidation" class="variant small-section-header"><a href="#variant.ValueValidation" class="anchor field"></a><code>ValueValidation</code></h3><div class="docblock"><p>Occurs when the user provides a value for an argument with a custom validation and the
 value fails that validation.</p>
 <h4 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h4>
@@ -108,7 +108,7 @@ value fails that validation.</p>
          .<span class="ident">validator</span>(<span class="ident">is_numeric</span>))
     .<span class="ident">try_get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;prog&quot;</span>, <span class="string">&quot;NotANumber&quot;</span>]);
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::ValueValidation</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::ValueValidation</span>);</code></pre></div>
 </div><h3 id="variant.TooManyValues" class="variant small-section-header"><a href="#variant.TooManyValues" class="anchor field"></a><code>TooManyValues</code></h3><div class="docblock"><p>Occurs when a user provides more values for an argument than were defined by setting
 <a href="struct.Arg.html#method.max_values"><code>Arg::max_values</code></a>.</p>
 <h4 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h4>
@@ -117,7 +117,7 @@ value fails that validation.</p>
         .<span class="ident">max_values</span>(<span class="number">2</span>))
     .<span class="ident">try_get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;prog&quot;</span>, <span class="string">&quot;too&quot;</span>, <span class="string">&quot;many&quot;</span>, <span class="string">&quot;values&quot;</span>]);
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::TooManyValues</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::TooManyValues</span>);</code></pre></div>
 </div><h3 id="variant.TooFewValues" class="variant small-section-header"><a href="#variant.TooFewValues" class="anchor field"></a><code>TooFewValues</code></h3><div class="docblock"><p>Occurs when the user provides fewer values for an argument than were defined by setting
 <a href="struct.Arg.html#method.min_values"><code>Arg::min_values</code></a>.</p>
 <h4 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h4>
@@ -127,7 +127,7 @@ value fails that validation.</p>
         .<span class="ident">min_values</span>(<span class="number">3</span>))
     .<span class="ident">try_get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;prog&quot;</span>, <span class="string">&quot;--opt&quot;</span>, <span class="string">&quot;too&quot;</span>, <span class="string">&quot;few&quot;</span>]);
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::TooFewValues</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::TooFewValues</span>);</code></pre></div>
 </div><h3 id="variant.TooManyOccurrences" class="variant small-section-header"><a href="#variant.TooManyOccurrences" class="anchor field"></a><code>TooManyOccurrences</code></h3><div class="docblock"><p>Occurs when a user provides more occurrences for an argument than were defined by setting
 <a href="struct.Arg.html#method.max_occurrences"><code>Arg::max_occurrences</code></a>.</p>
 <h4 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h4>
@@ -137,7 +137,7 @@ value fails that validation.</p>
         .<span class="ident">max_occurrences</span>(<span class="number">2</span>))
     .<span class="ident">try_get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;prog&quot;</span>, <span class="string">&quot;-vvv&quot;</span>]);
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::TooManyOccurrences</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::TooManyOccurrences</span>);</code></pre></div>
 </div><h3 id="variant.WrongNumberOfValues" class="variant small-section-header"><a href="#variant.WrongNumberOfValues" class="anchor field"></a><code>WrongNumberOfValues</code></h3><div class="docblock"><p>Occurs when the user provides a different number of values for an argument than what’s
 been defined by setting <a href="struct.Arg.html#method.number_of_values"><code>Arg::number_of_values</code></a> or than was implicitly set by
 <a href="struct.Arg.html#method.value_names"><code>Arg::value_names</code></a>.</p>
@@ -149,7 +149,7 @@ been defined by setting <a href="struct.Arg.html#method.number_of_values"><code>
         .<span class="ident">number_of_values</span>(<span class="number">2</span>))
     .<span class="ident">try_get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;prog&quot;</span>, <span class="string">&quot;--opt&quot;</span>, <span class="string">&quot;wrong&quot;</span>]);
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::WrongNumberOfValues</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::WrongNumberOfValues</span>);</code></pre></div>
 </div><h3 id="variant.ArgumentConflict" class="variant small-section-header"><a href="#variant.ArgumentConflict" class="anchor field"></a><code>ArgumentConflict</code></h3><div class="docblock"><p>Occurs when the user provides two values which conflict with each other and can’t be used
 together.</p>
 <h4 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h4>
@@ -161,7 +161,7 @@ together.</p>
         .<span class="ident">long</span>(<span class="string">&quot;color&quot;</span>))
     .<span class="ident">try_get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;prog&quot;</span>, <span class="string">&quot;--debug&quot;</span>, <span class="string">&quot;--color&quot;</span>]);
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::ArgumentConflict</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::ArgumentConflict</span>);</code></pre></div>
 </div><h3 id="variant.MissingRequiredArgument" class="variant small-section-header"><a href="#variant.MissingRequiredArgument" class="anchor field"></a><code>MissingRequiredArgument</code></h3><div class="docblock"><p>Occurs when the user does not provide one or more required arguments.</p>
 <h4 id="examples-11" class="section-header"><a href="#examples-11">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;prog&quot;</span>)
@@ -169,7 +169,7 @@ together.</p>
         .<span class="ident">required</span>(<span class="bool-val">true</span>))
     .<span class="ident">try_get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;prog&quot;</span>]);
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
 </div><h3 id="variant.MissingSubcommand" class="variant small-section-header"><a href="#variant.MissingSubcommand" class="anchor field"></a><code>MissingSubcommand</code></h3><div class="docblock"><p>Occurs when a subcommand is required (as defined by <a href="enum.AppSettings.html#variant.SubcommandRequired"><code>AppSettings::SubcommandRequired</code></a>),
 but the user does not provide one.</p>
 <h4 id="examples-12" class="section-header"><a href="#examples-12">Examples</a></h4>
@@ -180,7 +180,7 @@ but the user does not provide one.</p>
         <span class="string">&quot;myprog&quot;</span>,
     ]);
 <span class="macro">assert!</span>(<span class="ident">err</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">err</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::MissingSubcommand</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">err</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::MissingSubcommand</span>);</code></pre></div>
 </div><h3 id="variant.UnexpectedMultipleUsage" class="variant small-section-header"><a href="#variant.UnexpectedMultipleUsage" class="anchor field"></a><code>UnexpectedMultipleUsage</code></h3><div class="docblock"><p>Occurs when the user provides multiple values to an argument which doesn’t allow that.</p>
 <h4 id="examples-13" class="section-header"><a href="#examples-13">Examples</a></h4>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;prog&quot;</span>)
@@ -189,7 +189,7 @@ but the user does not provide one.</p>
         .<span class="ident">multiple_occurrences</span>(<span class="bool-val">false</span>))
     .<span class="ident">try_get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;prog&quot;</span>, <span class="string">&quot;--debug&quot;</span>, <span class="string">&quot;--debug&quot;</span>]);
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::UnexpectedMultipleUsage</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::UnexpectedMultipleUsage</span>);</code></pre></div>
 </div><h3 id="variant.InvalidUtf8" class="variant small-section-header"><a href="#variant.InvalidUtf8" class="anchor field"></a><code>InvalidUtf8</code></h3><div class="docblock"><p>Occurs when the user provides a value containing invalid UTF-8.</p>
 <p>To allow arbitrary data</p>
 <ul>
@@ -208,7 +208,7 @@ values</li>
                                <span class="ident">OsString::from</span>(<span class="string">&quot;-u&quot;</span>),
                                <span class="ident">OsString::from_vec</span>(<span class="macro">vec!</span>[<span class="number">0xE9</span>])]);
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::InvalidUtf8</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::InvalidUtf8</span>);</code></pre></div>
 </div><h3 id="variant.DisplayHelp" class="variant small-section-header"><a href="#variant.DisplayHelp" class="anchor field"></a><code>DisplayHelp</code></h3><div class="docblock"><p>Not a true “error” as it means <code>--help</code> or similar was used.
 The help message will be sent to <code>stdout</code>.</p>
 <p><strong>Note</strong>: If the help is displayed due to an error (such as missing subcommands) it will
@@ -217,7 +217,7 @@ be sent to <code>stderr</code> instead of <code>stdout</code>.</p>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">let</span> <span class="ident">result</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;prog&quot;</span>)
     .<span class="ident">try_get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;prog&quot;</span>, <span class="string">&quot;--help&quot;</span>]);
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::DisplayHelp</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::DisplayHelp</span>);</code></pre></div>
 </div><h3 id="variant.DisplayHelpOnMissingArgumentOrSubcommand" class="variant small-section-header"><a href="#variant.DisplayHelpOnMissingArgumentOrSubcommand" class="anchor field"></a><code>DisplayHelpOnMissingArgumentOrSubcommand</code></h3><div class="docblock"><p>Occurs when either an argument or a <a href="trait.Subcommand.html"><code>Subcommand</code></a> is required, as defined by
 <a href="enum.AppSettings.html#variant.ArgRequiredElseHelp"><code>AppSettings::ArgRequiredElseHelp</code></a> and
 <a href="enum.AppSettings.html#variant.SubcommandRequiredElseHelp"><code>AppSettings::SubcommandRequiredElseHelp</code></a>, but the user did not provide
@@ -231,7 +231,7 @@ one.</p>
             .<span class="ident">help</span>(<span class="string">&quot;The configuration file to use&quot;</span>)))
     .<span class="ident">try_get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;prog&quot;</span>]);
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::DisplayHelpOnMissingArgumentOrSubcommand</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::DisplayHelpOnMissingArgumentOrSubcommand</span>);</code></pre></div>
 </div><h3 id="variant.DisplayVersion" class="variant small-section-header"><a href="#variant.DisplayVersion" class="anchor field"></a><code>DisplayVersion</code></h3><div class="docblock"><p>Not a true “error” as it means <code>--version</code> or similar was used.
 The message will be sent to <code>stdout</code>.</p>
 <h4 id="examples-17" class="section-header"><a href="#examples-17">Examples</a></h4>
@@ -239,7 +239,7 @@ The message will be sent to <code>stdout</code>.</p>
     .<span class="ident">version</span>(<span class="string">&quot;3.0&quot;</span>)
     .<span class="ident">try_get_matches_from</span>(<span class="macro">vec!</span>[<span class="string">&quot;prog&quot;</span>, <span class="string">&quot;--version&quot;</span>]);
 <span class="macro">assert!</span>(<span class="ident">result</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::DisplayVersion</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">result</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::DisplayVersion</span>);</code></pre></div>
 </div><h3 id="variant.ArgumentNotFound" class="variant small-section-header"><a href="#variant.ArgumentNotFound" class="anchor field"></a><code>ArgumentNotFound</code></h3><div class="docblock"><p>Occurs when using the <a href="struct.ArgMatches.html#method.value_of_t"><code>ArgMatches::value_of_t</code></a> and friends to convert an argument value
 into type <code>T</code>, but the argument you requested wasn’t used. I.e. you asked for an argument
 with name <code>config</code> to be converted, but <code>config</code> wasn’t used by the user.</p>

@@ -246,7 +246,7 @@ failing to use the <code>--</code> syntax results in an error.</p>
     ]);
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::UnknownArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::UnknownArgument</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.required" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#614-620" title="goto source code">[src]</a></div><a href="#method.required" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.required" class="fnname">required</a>(self, yes: <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.bool.html">bool</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Specifies that the argument must be present.</p>
 <p>Required by default means it is required, when no other conflicting rules or overrides have
 been evaluated. Conflicting rules take precedence over being required.</p>
@@ -283,7 +283,7 @@ is if the operation is destructive in nature, and the user is essentially provin
     ]);
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.requires" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#681-684" title="goto source code">[src]</a></div><a href="#method.requires" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.requires" class="fnname">requires</a>&lt;T:&nbsp;Key&gt;(self, arg_id: T) -&gt; Self</h4></div></summary><div class="docblock"><p>Sets an argument that is required when this one is present</p>
 <p>i.e. when using this argument, the following argument <em>must</em> be present.</p>
 <p><strong>NOTE:</strong> <a href="struct.Arg.html#method.conflicts_with">Conflicting</a> rules and <a href="struct.Arg.html#method.overrides_with">override</a> rules take precedence over being required</p>
@@ -321,7 +321,7 @@ required</p>
     ]);
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.exclusive" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#720-726" title="goto source code">[src]</a></div><a href="#method.exclusive" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.exclusive" class="fnname">exclusive</a>(self, yes: <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.bool.html">bool</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>This argument must be passed alone; it conflicts with all other arguments.</p>
 <h5 id="examples-16" class="section-header"><a href="#examples-16">Examples</a></h5>
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="ident">Arg::new</span>(<span class="string">&quot;config&quot;</span>)
@@ -343,7 +343,7 @@ is an error.</p>
     ]);
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::ArgumentConflict</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::ArgumentConflict</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.global" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#763-769" title="goto source code">[src]</a></div><a href="#method.global" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.global" class="fnname">global</a>(self, yes: <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.bool.html">bool</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Specifies that an argument can be matched to all child <a href="trait.Subcommand.html"><code>Subcommand</code></a>s.</p>
 <p><strong>NOTE:</strong> Global arguments <em>only</em> propagate down, <strong>not</strong> up (to parent commands), however
 their values once a user uses them will be propagated back up to parents. In effect, this
@@ -435,7 +435,7 @@ this argument would be satisfied if the user provided it once or twice or thrice
     ]);
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::TooManyOccurrences</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::TooManyOccurrences</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.is_set" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#890-892" title="goto source code">[src]</a></div><a href="#method.is_set" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.is_set" class="fnname">is_set</a>(&amp;self, s: <a class="enum" href="enum.ArgSettings.html" title="enum clap::ArgSettings">ArgSettings</a>) -&gt; <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.bool.html">bool</a></h4></div></summary><div class="docblock"><p>Check if the <a href="enum.ArgSettings.html"><code>ArgSettings</code></a> variant is currently set on the argument.</p>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.setting" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#916-922" title="goto source code">[src]</a></div><a href="#method.setting" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.setting" class="fnname">setting</a>&lt;F&gt;(self, setting: F) -&gt; Self <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;F: <a class="trait" href="https://doc.rust-lang.org/1.58.1/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;ArgFlags&gt;,&nbsp;</span></h4></div></summary><div class="docblock"><p>Apply a setting to the argument.</p>
 <p>See <a href="enum.ArgSettings.html" title="ArgSettings"><code>ArgSettings</code></a> for a full list of possibilities and examples.</p>
@@ -541,7 +541,7 @@ $ program --ui-paths path1 --ui-paths signer signer</code></pre></div><h5 id="ex
     ]);
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::UnexpectedMultipleUsage</span>)</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::UnexpectedMultipleUsage</span>)</code></pre></div>
 <p>A common mistake is to define an option which allows multiple values, and a positional
 argument.</p>
 
@@ -596,7 +596,7 @@ number, or to say <a href="struct.Arg.html#method.multiple_occurrences" title="A
     ]);
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::UnknownArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::UnknownArgument</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.number_of_values" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#1214-1217" title="goto source code">[src]</a></div><a href="#method.number_of_values" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.number_of_values" class="fnname">number_of_values</a>(self, qty: <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.usize.html">usize</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>The number of values allowed for this argument.</p>
 <p>For example, if you had a
 <code>-f &lt;file&gt;</code> argument where you wanted exactly 3 ‘files’ you would set
@@ -622,7 +622,7 @@ as <em>not</em> setting it would only allow one occurrence of this argument.</p>
     ]);
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::WrongNumberOfValues</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::WrongNumberOfValues</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.max_values" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#1278-1281" title="goto source code">[src]</a></div><a href="#method.max_values" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.max_values" class="fnname">max_values</a>(self, qty: <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.usize.html">usize</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>The <em>maximum</em> number of values are for this argument.</p>
 <p>For example, if you had a
 <code>-f &lt;file&gt;</code> argument where you wanted up to 3 ‘files’ you would set <code>.max_values(3)</code>, and
@@ -663,7 +663,7 @@ occurrences and multiple values.</p>
     ]);
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::UnknownArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::UnknownArgument</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.min_values" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#1343-1346" title="goto source code">[src]</a></div><a href="#method.min_values" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.min_values" class="fnname">min_values</a>(self, qty: <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.usize.html">usize</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>The <em>minimum</em> number of values for this argument.</p>
 <p>For example, if you had a
 <code>-f &lt;file&gt;</code> argument where you wanted at least 2 ‘files’ you would set
@@ -705,7 +705,7 @@ occurrences and multiple values.</p>
     ]);
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::TooFewValues</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::TooFewValues</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.value_name" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#1396-1398" title="goto source code">[src]</a></div><a href="#method.value_name" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.value_name" class="fnname">value_name</a>(self, name: &amp;'help <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.str.html">str</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Placeholder for the argument’s value in the help message / usage.</p>
 <p>This name is cosmetic only; the name is <strong>not</strong> used to access arguments.
 This setting can be very helpful when describing the type of input the user should be
@@ -874,7 +874,7 @@ possible values.</p>
         <span class="string">&quot;prog&quot;</span>, <span class="string">&quot;--mode&quot;</span>, <span class="string">&quot;wrong&quot;</span>
     ]);
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::InvalidValue</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::InvalidValue</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.possible_values" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#1804-1812" title="goto source code">[src]</a></div><a href="#method.possible_values" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.possible_values" class="fnname">possible_values</a>&lt;I, T&gt;(self, values: I) -&gt; Self <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;I: <a class="trait" href="https://doc.rust-lang.org/1.58.1/core/iter/traits/collect/trait.IntoIterator.html" title="trait core::iter::traits::collect::IntoIterator">IntoIterator</a>&lt;Item = T&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;T: <a class="trait" href="https://doc.rust-lang.org/1.58.1/core/convert/trait.Into.html" title="trait core::convert::Into">Into</a>&lt;<a class="struct" href="struct.PossibleValue.html" title="struct clap::PossibleValue">PossibleValue</a>&lt;'help&gt;&gt;,&nbsp;</span></h4></div></summary><div class="docblock"><p>Possible values for this argument.</p>
 <p>At runtime, <code>clap</code> verifies that
 only one of the specified values was used, or fails with an error message.</p>
@@ -918,7 +918,7 @@ possible values.</p>
         <span class="string">&quot;prog&quot;</span>, <span class="string">&quot;--mode&quot;</span>, <span class="string">&quot;wrong&quot;</span>
     ]);
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::InvalidValue</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::InvalidValue</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.ignore_case" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#1864-1870" title="goto source code">[src]</a></div><a href="#method.ignore_case" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.ignore_case" class="fnname">ignore_case</a>(self, yes: <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.bool.html">bool</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Match values against <a href="struct.Arg.html#method.possible_values" title="Arg::possible_values"><code>Arg::possible_values</code></a> without matching case.</p>
 <p>When other arguments are conditionally required based on the
 value of a case-insensitive argument, the equality check done
@@ -990,7 +990,7 @@ hyphen is an error.</p>
     ]);
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::UnknownArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::UnknownArgument</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.allow_invalid_utf8" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#1965-1971" title="goto source code">[src]</a></div><a href="#method.allow_invalid_utf8" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.allow_invalid_utf8" class="fnname">allow_invalid_utf8</a>(self, yes: <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.bool.html">bool</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>The argument’s values can be invalid UTF-8 and should <em>not</em> be treated as an error.</p>
 <p><strong>NOTE:</strong> Using argument values with invalid UTF-8 code points requires using
 <a href="struct.ArgMatches.html#method.value_of_os"><code>ArgMatches::value_of_os</code></a>, <a href="struct.ArgMatches.html#method.values_of_os"><code>ArgMatches::values_of_os</code></a>, <a href="struct.ArgMatches.html#method.value_of_lossy"><code>ArgMatches::value_of_lossy</code></a>,
@@ -1042,7 +1042,7 @@ UTF-8 values.</p>
     ]);
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::EmptyValue</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::EmptyValue</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.require_equals" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#2072-2078" title="goto source code">[src]</a></div><a href="#method.require_equals" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.require_equals" class="fnname">require_equals</a>(self, yes: <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.bool.html">bool</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Requires that options use the <code>--option=val</code> syntax</p>
 <p>i.e. an equals between the option and associated value.</p>
 <p><strong>NOTE:</strong> Setting this requires <a href="struct.Arg.html#method.takes_value" title="Arg::takes_value"><code>Arg::takes_value</code></a></p>
@@ -1073,7 +1073,7 @@ error.</p>
     ]);
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::NoEquals</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::NoEquals</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.use_delimiter" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#2131-2142" title="goto source code">[src]</a></div><a href="#method.use_delimiter" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.use_delimiter" class="fnname">use_delimiter</a>(self, yes: <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.bool.html">bool</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Specifies that an argument should allow grouping of multiple values via a
 delimiter.</p>
 <p>i.e. should <code>--option=val1,val2,val3</code> be parsed as three values (<code>val1</code>, <code>val2</code>,
@@ -1165,7 +1165,7 @@ everything works in this first example, as we use a delimiter, as expected.</p>
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
 <span class="kw">let</span> <span class="ident">err</span> <span class="op">=</span> <span class="ident">res</span>.<span class="ident">unwrap_err</span>();
-<span class="macro">assert_eq!</span>(<span class="ident">err</span>.<span class="ident">kind</span>, <span class="ident">ErrorKind::UnknownArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">err</span>.<span class="ident">kind</span>(), <span class="ident">ErrorKind::UnknownArgument</span>);</code></pre></div>
 <p>What’s happening is <code>-o</code> is getting <code>val1</code>, and because delimiters are required yet none
 were present, it stops parsing <code>-o</code>. At this point it reaches <code>val2</code> and because no
 positional arguments have been defined, it’s an error of an unexpected argument.</p>
@@ -1834,7 +1834,7 @@ but it’s not an error because the <code>unless</code> arg has been supplied.</
     ]);
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.required_unless_present_all" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#3721-3728" title="goto source code">[src]</a></div><a href="#method.required_unless_present_all" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.required_unless_present_all" class="fnname">required_unless_present_all</a>&lt;T, I&gt;(self, names: I) -&gt; Self <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;I: <a class="trait" href="https://doc.rust-lang.org/1.58.1/core/iter/traits/collect/trait.IntoIterator.html" title="trait core::iter::traits::collect::IntoIterator">IntoIterator</a>&lt;Item = T&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;T: Key,&nbsp;</span></h4></div></summary><div class="docblock"><p>Sets this arg as <a href="struct.Arg.html#method.required">required</a> unless <em>all</em> of the specified arguments are present at runtime.</p>
 <p>In other words, parsing will succeed only if user either</p>
 <ul>
@@ -1882,7 +1882,7 @@ either <em>all</em> of <code>unless</code> args or the <code>self</code> arg is 
     ]);
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.required_unless_present_any" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#3798-3805" title="goto source code">[src]</a></div><a href="#method.required_unless_present_any" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.required_unless_present_any" class="fnname">required_unless_present_any</a>&lt;T, I&gt;(self, names: I) -&gt; Self <span class="where fmt-newline">where<br>&nbsp;&nbsp;&nbsp;&nbsp;I: <a class="trait" href="https://doc.rust-lang.org/1.58.1/core/iter/traits/collect/trait.IntoIterator.html" title="trait core::iter::traits::collect::IntoIterator">IntoIterator</a>&lt;Item = T&gt;,<br>&nbsp;&nbsp;&nbsp;&nbsp;T: Key,&nbsp;</span></h4></div></summary><div class="docblock"><p>Sets this arg as <a href="struct.Arg.html#method.required">required</a> unless <em>any</em> of the specified arguments are present at runtime.</p>
 <p>In other words, parsing will succeed only if user either</p>
 <ul>
@@ -1932,7 +1932,7 @@ or this arg is an error.</p>
     ]);
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.required_if_eq" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#3889-3892" title="goto source code">[src]</a></div><a href="#method.required_if_eq" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.required_if_eq" class="fnname">required_if_eq</a>&lt;T:&nbsp;Key&gt;(self, arg_id: T, val: &amp;'help <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.str.html">str</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>This argument is <a href="struct.Arg.html#method.required">required</a> only if the specified <code>arg</code> is present at runtime and its value
 equals <code>val</code>.</p>
 <p><strong>NOTE:</strong> An argument is considered present when there is a <a href="struct.Arg.html#method.default_value" title="Arg::default_value"><code>Arg::default_value</code></a></p>
@@ -1968,7 +1968,7 @@ equals <code>val</code>.</p>
 
 <span class="comment">// We did use --other=special so &quot;cfg&quot; had become required but was missing.</span>
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::MissingRequiredArgument</span>);
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::MissingRequiredArgument</span>);
 
 <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">App::new</span>(<span class="string">&quot;prog&quot;</span>)
     .<span class="ident">arg</span>(<span class="ident">Arg::new</span>(<span class="string">&quot;cfg&quot;</span>)
@@ -2000,7 +2000,7 @@ equals <code>val</code>.</p>
 
 <span class="comment">// However, case-insensitive comparisons can be enabled.  This typically occurs when using Arg::possible_values().</span>
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.required_if_eq_any" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#3968-3972" title="goto source code">[src]</a></div><a href="#method.required_if_eq_any" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.required_if_eq_any" class="fnname">required_if_eq_any</a>&lt;T:&nbsp;Key&gt;(self, ifs: <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.tuple.html">(</a>T, &amp;'help <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.str.html">str</a><a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.tuple.html">)</a><a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.slice.html">]</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Specify this argument is <a href="struct.Arg.html#method.required">required</a> based on multiple conditions.</p>
 <p>The conditions are set up in a <code>(arg, val)</code> style tuple. The requirement will only become
 valid if one of the specified <code>arg</code>’s value equals its corresponding <code>val</code>.</p>
@@ -2055,7 +2055,7 @@ value of <code>val</code> but <em>not</em> using this arg is an error.</p>
     ]);
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.required_if_eq_all" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#4046-4050" title="goto source code">[src]</a></div><a href="#method.required_if_eq_all" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.required_if_eq_all" class="fnname">required_if_eq_all</a>&lt;T:&nbsp;Key&gt;(self, ifs: <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.tuple.html">(</a>T, &amp;'help <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.str.html">str</a><a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.tuple.html">)</a><a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.slice.html">]</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Specify this argument is <a href="struct.Arg.html#method.required">required</a> based on multiple conditions.</p>
 <p>The conditions are set up in a <code>(arg, val)</code> style tuple. The requirement will only become
 valid if every one of the specified <code>arg</code>’s value equals its corresponding <code>val</code>.</p>
@@ -2110,7 +2110,7 @@ value of <code>val</code> but <em>not</em> using this arg is an error.</p>
     ]);
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.requires_if" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#4110-4113" title="goto source code">[src]</a></div><a href="#method.requires_if" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.requires_if" class="fnname">requires_if</a>&lt;T:&nbsp;Key&gt;(self, val: &amp;'help <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.str.html">str</a>, arg_id: T) -&gt; Self</h4></div></summary><div class="docblock"><p>Require another argument if this arg was present at runtime and its value equals to <code>val</code>.</p>
 <p>This method takes <code>value, another_arg</code> pair. At runtime, clap will check
 if this arg (<code>self</code>) is present and its value equals to <code>val</code>.
@@ -2148,7 +2148,7 @@ defining argument’s value is equal to <code>val</code>. If the defining argume
     ]);
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.requires_ifs" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#4162-4166" title="goto source code">[src]</a></div><a href="#method.requires_ifs" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.requires_ifs" class="fnname">requires_ifs</a>&lt;T:&nbsp;Key&gt;(self, ifs: <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.tuple.html">(</a>&amp;'help <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.str.html">str</a>, T<a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.tuple.html">)</a><a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.slice.html">]</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Allows multiple conditional requirements.</p>
 <p>The requirement will only become valid if this arg’s value equals <code>val</code>.</p>
 <p><strong>NOTE:</strong> An argument is considered present when there is a <a href="struct.Arg.html#method.default_value" title="Arg::default_value"><code>Arg::default_value</code></a></p>
@@ -2179,7 +2179,7 @@ than <code>val</code>, <code>arg</code> isn’t required.</p>
     ]);
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>()); <span class="comment">// We  used --config=special.conf so --option &lt;val&gt; is required</span>
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.requires_all" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#4233-4236" title="goto source code">[src]</a></div><a href="#method.requires_all" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.requires_all" class="fnname">requires_all</a>&lt;T:&nbsp;Key&gt;(self, names: <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.slice.html">&amp;[T]</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>Require these arguments names when this one is presen</p>
 <p>i.e. when using this argument, the following arguments <em>must</em> be present.</p>
 <p><strong>NOTE:</strong> <a href="struct.Arg.html#method.conflicts_with">Conflicting</a> rules and <a href="struct.Arg.html#method.overrides_with">override</a> rules take precedence over being required
@@ -2224,7 +2224,7 @@ error.</p>
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
 <span class="comment">// We didn&#39;t use output</span>
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::MissingRequiredArgument</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.conflicts_with" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#4284-4287" title="goto source code">[src]</a></div><a href="#method.conflicts_with" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.conflicts_with" class="fnname">conflicts_with</a>&lt;T:&nbsp;Key&gt;(self, arg_id: T) -&gt; Self</h4></div></summary><div class="docblock"><p>This argument is mutually exclusive with the specified argument.</p>
 <p><strong>NOTE:</strong> Conflicting rules take precedence over being required by default. Conflict rules
 only need to be set for one of the two arguments, they do not need to be set for each.</p>
@@ -2251,7 +2251,7 @@ need to also do B.conflicts_with(A))</p>
     ]);
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::ArgumentConflict</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::ArgumentConflict</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.conflicts_with_all" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#4337-4340" title="goto source code">[src]</a></div><a href="#method.conflicts_with_all" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.conflicts_with_all" class="fnname">conflicts_with_all</a>(self, names: <a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.slice.html">&amp;[</a>&amp;<a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.str.html">str</a><a class="primitive" href="https://doc.rust-lang.org/1.58.1/std/primitive.slice.html">]</a>) -&gt; Self</h4></div></summary><div class="docblock"><p>This argument is mutually exclusive with the specified arguments.</p>
 <p>See <a href="struct.Arg.html#method.conflicts_with"><code>Arg::conflicts_with</code></a>.</p>
 <p><strong>NOTE:</strong> Conflicting rules take precedence over being required by default. Conflict rules
@@ -2281,7 +2281,7 @@ conflicting argument is an error.</p>
     ]);
 
 <span class="macro">assert!</span>(<span class="ident">res</span>.<span class="ident">is_err</span>());
-<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>, <span class="ident">ErrorKind::ArgumentConflict</span>);</code></pre></div>
+<span class="macro">assert_eq!</span>(<span class="ident">res</span>.<span class="ident">unwrap_err</span>().<span class="ident">kind</span>(), <span class="ident">ErrorKind::ArgumentConflict</span>);</code></pre></div>
 </div></details><details class="rustdoc-toggle method-toggle" open><summary><div id="method.overrides_with" class="method has-srclink"><div class="rightside"><a class="srclink" href="../src/clap/build/arg/mod.rs.html#4453-4456" title="goto source code">[src]</a></div><a href="#method.overrides_with" class="anchor"></a><h4 class="code-header">pub fn <a href="#method.overrides_with" class="fnname">overrides_with</a>&lt;T:&nbsp;Key&gt;(self, arg_id: T) -&gt; Self</h4></div></summary><div class="docblock"><p>Sets an overridable argument.</p>
 <p>i.e. this argument and the following argument
 will override each other in POSIX style (whichever argument was specified at runtime
