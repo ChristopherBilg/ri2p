@@ -1,1 +1,17 @@
-hostname = "127.0.0.1"
+################################################################################
+# ri2p Configuration File                                                      #
+#                                                                              #
+# Note: This configuration file contains all user-modifiable configuration     #
+#       options. Each configuration option is prepended with comments that     #
+#       explain how the configuration option is used, along with it's          #
+#       default value.                                                         #
+################################################################################
+
+# Details: i2p reseed hosts.txt files.
+# Default value: [ "http://reg.i2p/hosts.txt", "http://identiguy.i2p/hosts.txt", "http://stats.i2p/cgi-bin/newhosts.txt", "http://i2p-projekt.i2p/hosts.txt" ]
+reseed_hosts = [
+    "http://reg.i2p/hosts.txt",
+    "http://identiguy.i2p/hosts.txt",
+    "http://stats.i2p/cgi-bin/newhosts.txt",
+    "http://i2p-projekt.i2p/hosts.txt"
+]
