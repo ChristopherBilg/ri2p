@@ -20,6 +20,8 @@ impl Daemon {
         });
 
         //  Wait for all threads to finish execution before returning
-        net_db_thread.join().expect("The NetDB thread has panicked.");
+        net_db_thread
+            .join()
+            .expect("The NetDB thread has panicked.");
     }
 }
