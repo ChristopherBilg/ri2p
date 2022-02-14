@@ -14,20 +14,44 @@
 <span id="13">13</span>
 <span id="14">14</span>
 <span id="15">15</span>
-</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::daemon::config::Config</span>;
+<span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+</pre><pre class="rust"><code><span class="kw">use</span> <span class="ident">log::info</span>;
+<span class="kw">use</span> <span class="ident">std::thread</span>;
+
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::daemon::config::Config</span>;
+<span class="kw">use</span> <span class="ident"><span class="kw">crate</span>::netdb::netdb::NetDB</span>;
 
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Daemon</span> {
     <span class="kw">pub</span> <span class="ident">config</span>: <span class="ident">Config</span>,
 }
 
 <span class="kw">impl</span> <span class="ident">Daemon</span> {
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">initialize</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="ident">bool</span> {
-        <span class="bool-val">true</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">start</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {
+        <span class="comment">// Start the Network Database (NetDB)</span>
+        <span class="macro">info!</span>(<span class="string">&quot;Starting NetDB on its own thread.&quot;</span>);
+        <span class="kw">let</span> <span class="ident">net_db</span> <span class="op">=</span> <span class="ident">NetDB</span> {
+            <span class="ident">config</span>: <span class="self">self</span>.<span class="ident">config</span>.<span class="ident">clone</span>(),
+        };
+        <span class="kw">let</span> <span class="ident">net_db_thread</span> <span class="op">=</span> <span class="ident">thread::spawn</span>(<span class="kw">move</span> <span class="op">|</span><span class="op">|</span> {
+            <span class="ident">net_db</span>.<span class="ident">start</span>();
+        });
+
+        <span class="comment">//  Wait for all threads to finish execution before returning</span>
+        <span class="ident">net_db_thread</span>
+            .<span class="ident">join</span>()
+            .<span class="ident">expect</span>(<span class="string">&quot;The NetDB thread has panicked.&quot;</span>);
     }
-
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">start</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {}
-
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">stop</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) {}
 }
 </code></pre></div>
 </section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="ri2p" data-search-index-js="../../../search-index.js" data-search-js="../../../search.js"></div>

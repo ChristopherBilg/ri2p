@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["main",""]],"mod":[["daemon",""]]});
+initSidebarItems({"fn":[["main",""]],"mod":[["daemon",""],["netdb",""]]});
