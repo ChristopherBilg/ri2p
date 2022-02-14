@@ -1,4 +1,5 @@
 mod daemon;
+mod netdb;
 
 use clap::Parser;
 use log::{error, info};
@@ -34,7 +35,7 @@ fn main() {
         }
     };
 
-    let config: daemon::config::Config = match toml::from_str(&config_toml_data) {
+    let config = match toml::from_str(&config_toml_data) {
         Ok(data) => {
             info!("Successfully parsed configuration file.");
             data
@@ -49,16 +50,8 @@ fn main() {
     // Initialize and start daemon
     let daemon = daemon::daemon::Daemon { config };
 
-    if daemon.initialize() {
-        info!("Successfully initialized daemon.");
-    } else {
-        error!("Failed to initialize daemon.");
-        std::process::exit(1);
-    }
-
     info!("Starting daemon.");
     daemon.start();
 
-    info!("Stopping daemon.");
-    daemon.stop();
+    info!("Shutdown all services.")
 }

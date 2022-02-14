@@ -1,6 +1,6 @@
 # Introduction
 
-ri2p (Rust-i2p) is a free and open source project that aims to implement the [i2p Specifications](https://geti2p.net/spec) in a minimal, lightweight and memory safe program.
+ri2p (Rust-i2p) is a free and open-source project that aims to implement the [i2p specifications](https://geti2p.net/spec) in a minimal, lightweight and memory safe program.
 
 ri2p is written in the Rust systems programming language in order to gain the benefits that Rust provides such as; memory management, memory and type safety, systems-level performance, native cross-compiling support, and an easy-to-use dependency (package) [registry](https://crates.io/).
 
