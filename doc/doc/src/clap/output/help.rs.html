@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;clap-3.1.2&#x2F;src&#x2F;output&#x2F;help.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>help.rs - source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><script defer src="../../../main.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `&#x2F;home&#x2F;runner&#x2F;.cargo&#x2F;registry&#x2F;src&#x2F;github.com-1ecc6299db9ec823&#x2F;clap-3.1.5&#x2F;src&#x2F;output&#x2F;help.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>help.rs - source</title><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><script defer src="../../../main.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script>
     <noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"><style type="text/css">#crate-search{background-image:url("../../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../../clap/index.html'><div class='logo-container rust-logo'><img src='https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;clap-rs&#x2F;clap&#x2F;master&#x2F;assets&#x2F;clap.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
@@ -1071,6 +1071,82 @@
 <span id="1070">1070</span>
 <span id="1071">1071</span>
 <span id="1072">1072</span>
+<span id="1073">1073</span>
+<span id="1074">1074</span>
+<span id="1075">1075</span>
+<span id="1076">1076</span>
+<span id="1077">1077</span>
+<span id="1078">1078</span>
+<span id="1079">1079</span>
+<span id="1080">1080</span>
+<span id="1081">1081</span>
+<span id="1082">1082</span>
+<span id="1083">1083</span>
+<span id="1084">1084</span>
+<span id="1085">1085</span>
+<span id="1086">1086</span>
+<span id="1087">1087</span>
+<span id="1088">1088</span>
+<span id="1089">1089</span>
+<span id="1090">1090</span>
+<span id="1091">1091</span>
+<span id="1092">1092</span>
+<span id="1093">1093</span>
+<span id="1094">1094</span>
+<span id="1095">1095</span>
+<span id="1096">1096</span>
+<span id="1097">1097</span>
+<span id="1098">1098</span>
+<span id="1099">1099</span>
+<span id="1100">1100</span>
+<span id="1101">1101</span>
+<span id="1102">1102</span>
+<span id="1103">1103</span>
+<span id="1104">1104</span>
+<span id="1105">1105</span>
+<span id="1106">1106</span>
+<span id="1107">1107</span>
+<span id="1108">1108</span>
+<span id="1109">1109</span>
+<span id="1110">1110</span>
+<span id="1111">1111</span>
+<span id="1112">1112</span>
+<span id="1113">1113</span>
+<span id="1114">1114</span>
+<span id="1115">1115</span>
+<span id="1116">1116</span>
+<span id="1117">1117</span>
+<span id="1118">1118</span>
+<span id="1119">1119</span>
+<span id="1120">1120</span>
+<span id="1121">1121</span>
+<span id="1122">1122</span>
+<span id="1123">1123</span>
+<span id="1124">1124</span>
+<span id="1125">1125</span>
+<span id="1126">1126</span>
+<span id="1127">1127</span>
+<span id="1128">1128</span>
+<span id="1129">1129</span>
+<span id="1130">1130</span>
+<span id="1131">1131</span>
+<span id="1132">1132</span>
+<span id="1133">1133</span>
+<span id="1134">1134</span>
+<span id="1135">1135</span>
+<span id="1136">1136</span>
+<span id="1137">1137</span>
+<span id="1138">1138</span>
+<span id="1139">1139</span>
+<span id="1140">1140</span>
+<span id="1141">1141</span>
+<span id="1142">1142</span>
+<span id="1143">1143</span>
+<span id="1144">1144</span>
+<span id="1145">1145</span>
+<span id="1146">1146</span>
+<span id="1147">1147</span>
+<span id="1148">1148</span>
 </pre><pre class="rust"><code><span class="comment">// Std</span>
 <span class="kw">use</span> <span class="ident">std</span>::{
     <span class="ident">borrow::Cow</span>,
@@ -1084,6 +1160,7 @@
 <span class="kw">use</span> <span class="kw">crate</span>::{
     <span class="ident">build</span>::{<span class="ident">display_arg_val</span>, <span class="ident">Arg</span>, <span class="ident">Command</span>},
     <span class="ident">output</span>::{<span class="ident">fmt::Colorizer</span>, <span class="ident">Usage</span>},
+    <span class="ident">PossibleValue</span>,
 };
 
 <span class="comment">// Third party</span>
@@ -1458,7 +1535,7 @@
     <span class="doccomment">/// Writes argument&#39;s help to the wrapped stream.</span>
     <span class="kw">fn</span> <span class="ident">help</span>(
         <span class="kw-2">&amp;mut</span> <span class="self">self</span>,
-        <span class="ident">is_not_positional</span>: <span class="ident">bool</span>,
+        <span class="ident">arg</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">Arg</span><span class="op">&lt;</span><span class="lifetime">&#39;help</span><span class="op">&gt;</span><span class="op">&gt;</span>,
         <span class="ident">about</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
         <span class="ident">spec_vals</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>,
         <span class="ident">next_line_help</span>: <span class="ident">bool</span>,
@@ -1474,7 +1551,7 @@
             <span class="ident">longest</span> <span class="op">+</span> <span class="number">12</span>
         };
 
-        <span class="kw">let</span> <span class="ident">too_long</span> <span class="op">=</span> <span class="ident">spaces</span> <span class="op">+</span> <span class="ident">display_width</span>(<span class="ident">about</span>) <span class="op">+</span> <span class="ident">display_width</span>(<span class="ident">spec_vals</span>) <span class="op">&gt;</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">term_w</span>;
+        <span class="kw">let</span> <span class="ident">too_long</span> <span class="op">=</span> <span class="ident">spaces</span> <span class="op">+</span> <span class="ident">display_width</span>(<span class="kw-2">&amp;</span><span class="ident">help</span>) <span class="op">&gt;</span><span class="op">=</span> <span class="self">self</span>.<span class="ident">term_w</span>;
 
         <span class="comment">// Is help on next line, if so then indent</span>
         <span class="kw">if</span> <span class="ident">next_line_help</span> {
@@ -1496,16 +1573,99 @@
         <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">part</span>) <span class="op">=</span> <span class="ident">help</span>.<span class="ident">lines</span>().<span class="ident">next</span>() {
             <span class="self">self</span>.<span class="ident">none</span>(<span class="ident">part</span>)<span class="question-mark">?</span>;
         }
+
+        <span class="comment">// indent of help</span>
+        <span class="kw">let</span> <span class="ident">spaces</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">next_line_help</span> {
+            <span class="ident">TAB_WIDTH</span> <span class="op">*</span> <span class="number">3</span>
+        } <span class="kw">else</span> <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="bool-val">true</span>) <span class="op">=</span> <span class="ident">arg</span>.<span class="ident">map</span>(<span class="op">|</span><span class="ident">a</span><span class="op">|</span> <span class="ident">a</span>.<span class="ident">is_positional</span>()) {
+            <span class="ident">longest</span> <span class="op">+</span> <span class="ident">TAB_WIDTH</span> <span class="op">*</span> <span class="number">2</span>
+        } <span class="kw">else</span> {
+            <span class="ident">longest</span> <span class="op">+</span> <span class="ident">TAB_WIDTH</span> <span class="op">*</span> <span class="number">3</span>
+        };
+
         <span class="kw">for</span> <span class="ident">part</span> <span class="kw">in</span> <span class="ident">help</span>.<span class="ident">lines</span>().<span class="ident">skip</span>(<span class="number">1</span>) {
             <span class="self">self</span>.<span class="ident">none</span>(<span class="string">&quot;\n&quot;</span>)<span class="question-mark">?</span>;
-            <span class="kw">if</span> <span class="ident">next_line_help</span> {
-                <span class="self">self</span>.<span class="ident">none</span>(<span class="macro">format!</span>(<span class="string">&quot;{}{}{}&quot;</span>, <span class="ident">TAB</span>, <span class="ident">TAB</span>, <span class="ident">TAB</span>))<span class="question-mark">?</span>;
-            } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">is_not_positional</span> {
-                <span class="self">self</span>.<span class="ident">spaces</span>(<span class="ident">longest</span> <span class="op">+</span> <span class="number">12</span>)<span class="question-mark">?</span>;
-            } <span class="kw">else</span> {
-                <span class="self">self</span>.<span class="ident">spaces</span>(<span class="ident">longest</span> <span class="op">+</span> <span class="number">8</span>)<span class="question-mark">?</span>;
-            }
+            <span class="self">self</span>.<span class="ident">spaces</span>(<span class="ident">spaces</span>)<span class="question-mark">?</span>;
             <span class="self">self</span>.<span class="ident">none</span>(<span class="ident">part</span>)<span class="question-mark">?</span>;
+        }
+
+        <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;unstable-v4&quot;</span>)]</span>
+        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">arg</span>) <span class="op">=</span> <span class="ident">arg</span> {
+            <span class="kw">const</span> <span class="ident">DASH_SPACE</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="string">&quot;- &quot;</span>.<span class="ident">len</span>();
+            <span class="kw">const</span> <span class="ident">COLON_SPACE</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="string">&quot;: &quot;</span>.<span class="ident">len</span>();
+            <span class="kw">if</span> <span class="self">self</span>.<span class="ident">use_long</span>
+                <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="ident">arg</span>.<span class="ident">is_hide_possible_values_set</span>()
+                <span class="op">&amp;&amp;</span> <span class="ident">arg</span>
+                    .<span class="ident">possible_vals</span>
+                    .<span class="ident">iter</span>()
+                    .<span class="ident">any</span>(<span class="ident">PossibleValue::should_show_help</span>)
+            {
+                <span class="macro">debug!</span>(<span class="string">&quot;Help::help: Found possible vals...{:?}&quot;</span>, <span class="ident">arg</span>.<span class="ident">possible_vals</span>);
+                <span class="kw">if</span> <span class="op">!</span><span class="ident">help</span>.<span class="ident">is_empty</span>() {
+                    <span class="self">self</span>.<span class="ident">none</span>(<span class="string">&quot;\n\n&quot;</span>)<span class="question-mark">?</span>;
+                    <span class="self">self</span>.<span class="ident">spaces</span>(<span class="ident">spaces</span>)<span class="question-mark">?</span>;
+                }
+                <span class="self">self</span>.<span class="ident">none</span>(<span class="string">&quot;Possible values:&quot;</span>)<span class="question-mark">?</span>;
+                <span class="kw">let</span> <span class="ident">longest</span> <span class="op">=</span> <span class="ident">arg</span>
+                    .<span class="ident">possible_vals</span>
+                    .<span class="ident">iter</span>()
+                    .<span class="ident">filter_map</span>(<span class="op">|</span><span class="ident">f</span><span class="op">|</span> <span class="ident">f</span>.<span class="ident">get_visible_quoted_name</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">name</span><span class="op">|</span> <span class="ident">display_width</span>(<span class="kw-2">&amp;</span><span class="ident">name</span>)))
+                    .<span class="ident">max</span>()
+                    .<span class="ident">expect</span>(<span class="string">&quot;Only called with possible value&quot;</span>);
+                <span class="kw">let</span> <span class="ident">help_longest</span> <span class="op">=</span> <span class="ident">arg</span>
+                    .<span class="ident">possible_vals</span>
+                    .<span class="ident">iter</span>()
+                    .<span class="ident">filter_map</span>(<span class="op">|</span><span class="ident">f</span><span class="op">|</span> <span class="ident">f</span>.<span class="ident">get_visible_help</span>().<span class="ident">map</span>(<span class="ident">display_width</span>))
+                    .<span class="ident">max</span>()
+                    .<span class="ident">expect</span>(<span class="string">&quot;Only called with possible value with help&quot;</span>);
+                <span class="comment">// should new line</span>
+                <span class="kw">let</span> <span class="ident">taken</span> <span class="op">=</span> <span class="ident">longest</span> <span class="op">+</span> <span class="ident">spaces</span> <span class="op">+</span> <span class="ident">DASH_SPACE</span>;
+
+                <span class="kw">let</span> <span class="ident">possible_value_new_line</span> <span class="op">=</span>
+                    <span class="self">self</span>.<span class="ident">term_w</span> <span class="op">&gt;</span><span class="op">=</span> <span class="ident">taken</span> <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">term_w</span> <span class="op">&lt;</span> <span class="ident">taken</span> <span class="op">+</span> <span class="ident">COLON_SPACE</span> <span class="op">+</span> <span class="ident">help_longest</span>;
+
+                <span class="kw">let</span> <span class="ident">spaces</span> <span class="op">=</span> <span class="ident">spaces</span> <span class="op">+</span> <span class="ident">TAB_WIDTH</span> <span class="op">-</span> <span class="ident">DASH_SPACE</span>;
+                <span class="kw">let</span> <span class="ident">spaces_help</span> <span class="op">=</span> <span class="kw">if</span> <span class="ident">possible_value_new_line</span> {
+                    <span class="ident">spaces</span> <span class="op">+</span> <span class="ident">DASH_SPACE</span>
+                } <span class="kw">else</span> {
+                    <span class="ident">spaces</span> <span class="op">+</span> <span class="ident">longest</span> <span class="op">+</span> <span class="ident">DASH_SPACE</span> <span class="op">+</span> <span class="ident">COLON_SPACE</span>
+                };
+
+                <span class="kw">for</span> <span class="ident">pv</span> <span class="kw">in</span> <span class="ident">arg</span>.<span class="ident">possible_vals</span>.<span class="ident">iter</span>().<span class="ident">filter</span>(<span class="op">|</span><span class="ident">pv</span><span class="op">|</span> <span class="op">!</span><span class="ident">pv</span>.<span class="ident">is_hide_set</span>()) {
+                    <span class="self">self</span>.<span class="ident">none</span>(<span class="string">&quot;\n&quot;</span>)<span class="question-mark">?</span>;
+                    <span class="self">self</span>.<span class="ident">spaces</span>(<span class="ident">spaces</span>)<span class="question-mark">?</span>;
+                    <span class="self">self</span>.<span class="ident">none</span>(<span class="string">&quot;- &quot;</span>)<span class="question-mark">?</span>;
+                    <span class="self">self</span>.<span class="ident">good</span>(<span class="ident">pv</span>.<span class="ident">get_name</span>())<span class="question-mark">?</span>;
+                    <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">help</span>) <span class="op">=</span> <span class="ident">pv</span>.<span class="ident">get_help</span>() {
+                        <span class="macro">debug!</span>(<span class="string">&quot;Help::help: Possible Value help&quot;</span>);
+
+                        <span class="kw">if</span> <span class="ident">possible_value_new_line</span> {
+                            <span class="self">self</span>.<span class="ident">none</span>(<span class="string">&quot;:\n&quot;</span>)<span class="question-mark">?</span>;
+                            <span class="self">self</span>.<span class="ident">spaces</span>(<span class="ident">spaces_help</span>)<span class="question-mark">?</span>;
+                        } <span class="kw">else</span> {
+                            <span class="self">self</span>.<span class="ident">none</span>(<span class="string">&quot;: &quot;</span>)<span class="question-mark">?</span>;
+                            <span class="comment">// To align help messages</span>
+                            <span class="self">self</span>.<span class="ident">spaces</span>(<span class="ident">longest</span> <span class="op">-</span> <span class="ident">display_width</span>(<span class="ident">pv</span>.<span class="ident">get_name</span>()))<span class="question-mark">?</span>;
+                        }
+
+                        <span class="kw">let</span> <span class="ident">avail_chars</span> <span class="op">=</span> <span class="kw">if</span> <span class="self">self</span>.<span class="ident">term_w</span> <span class="op">&gt;</span> <span class="ident">spaces_help</span> {
+                            <span class="self">self</span>.<span class="ident">term_w</span> <span class="op">-</span> <span class="ident">spaces_help</span>
+                        } <span class="kw">else</span> {
+                            <span class="ident">usize::MAX</span>
+                        };
+
+                        <span class="kw">let</span> <span class="ident">help</span> <span class="op">=</span> <span class="ident">text_wrapper</span>(<span class="ident">help</span>, <span class="ident">avail_chars</span>);
+                        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">help</span> <span class="op">=</span> <span class="ident">help</span>.<span class="ident">lines</span>();
+
+                        <span class="self">self</span>.<span class="ident">none</span>(<span class="ident">help</span>.<span class="ident">next</span>().<span class="ident">unwrap_or_default</span>())<span class="question-mark">?</span>;
+                        <span class="kw">for</span> <span class="ident">part</span> <span class="kw">in</span> <span class="ident">help</span> {
+                            <span class="self">self</span>.<span class="ident">none</span>(<span class="string">&quot;\n&quot;</span>)<span class="question-mark">?</span>;
+                            <span class="self">self</span>.<span class="ident">spaces</span>(<span class="ident">spaces_help</span>)<span class="question-mark">?</span>;
+                            <span class="self">self</span>.<span class="ident">none</span>(<span class="ident">part</span>)<span class="question-mark">?</span>;
+                        }
+                    }
+                }
+            }
         }
         <span class="prelude-val">Ok</span>(())
     }
@@ -1529,13 +1689,7 @@
             <span class="ident">arg</span>.<span class="ident">help</span>.<span class="ident">or</span>(<span class="ident">arg</span>.<span class="ident">long_help</span>).<span class="ident">unwrap_or</span>(<span class="string">&quot;&quot;</span>)
         };
 
-        <span class="self">self</span>.<span class="ident">help</span>(
-            <span class="op">!</span><span class="ident">arg</span>.<span class="ident">is_positional</span>(),
-            <span class="ident">about</span>,
-            <span class="ident">spec_vals</span>,
-            <span class="ident">next_line_help</span>,
-            <span class="ident">longest</span>,
-        )<span class="question-mark">?</span>;
+        <span class="self">self</span>.<span class="ident">help</span>(<span class="prelude-val">Some</span>(<span class="ident">arg</span>), <span class="ident">about</span>, <span class="ident">spec_vals</span>, <span class="ident">next_line_help</span>, <span class="ident">longest</span>)<span class="question-mark">?</span>;
         <span class="prelude-val">Ok</span>(())
     }
 
@@ -1645,7 +1799,12 @@
             }
         }
 
-        <span class="kw">if</span> <span class="op">!</span><span class="ident">a</span>.<span class="ident">is_hide_possible_values_set</span>() <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="ident">a</span>.<span class="ident">possible_vals</span>.<span class="ident">is_empty</span>() {
+        <span class="kw">if</span> <span class="op">!</span>(<span class="ident">a</span>.<span class="ident">is_hide_possible_values_set</span>()
+            <span class="op">|</span><span class="op">|</span> <span class="ident">a</span>.<span class="ident">possible_vals</span>.<span class="ident">is_empty</span>()
+            <span class="op">|</span><span class="op">|</span> <span class="macro">cfg!</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;unstable-v4&quot;</span>)
+                <span class="op">&amp;&amp;</span> <span class="self">self</span>.<span class="ident">use_long</span>
+                <span class="op">&amp;&amp;</span> <span class="ident">a</span>.<span class="ident">possible_vals</span>.<span class="ident">iter</span>().<span class="ident">any</span>(<span class="ident">PossibleValue::should_show_help</span>))
+        {
             <span class="macro">debug!</span>(
                 <span class="string">&quot;Help::spec_vals: Found possible vals...{:?}&quot;</span>,
                 <span class="ident">a</span>.<span class="ident">possible_vals</span>
@@ -1654,15 +1813,7 @@
             <span class="kw">let</span> <span class="ident">pvs</span> <span class="op">=</span> <span class="ident">a</span>
                 .<span class="ident">possible_vals</span>
                 .<span class="ident">iter</span>()
-                .<span class="ident">filter_map</span>(<span class="op">|</span><span class="ident">value</span><span class="op">|</span> {
-                    <span class="kw">if</span> <span class="ident">value</span>.<span class="ident">is_hide_set</span>() {
-                        <span class="prelude-val">None</span>
-                    } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">value</span>.<span class="ident">get_name</span>().<span class="ident">contains</span>(<span class="ident">char::is_whitespace</span>) {
-                        <span class="prelude-val">Some</span>(<span class="macro">format!</span>(<span class="string">&quot;{:?}&quot;</span>, <span class="ident">value</span>.<span class="ident">get_name</span>()))
-                    } <span class="kw">else</span> {
-                        <span class="prelude-val">Some</span>(<span class="ident">value</span>.<span class="ident">get_name</span>().<span class="ident">to_string</span>())
-                    }
-                })
+                .<span class="ident">filter_map</span>(<span class="ident">PossibleValue::get_visible_quoted_name</span>)
                 .<span class="ident">collect</span>::<span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span><span class="op">&gt;</span>()
                 .<span class="ident">join</span>(<span class="string">&quot;, &quot;</span>);
 
@@ -1743,7 +1894,7 @@
             .<span class="ident">unwrap_or</span>(<span class="string">&quot;&quot;</span>);
 
         <span class="self">self</span>.<span class="ident">subcmd</span>(<span class="ident">sc_str</span>, <span class="ident">next_line_help</span>, <span class="ident">longest</span>)<span class="question-mark">?</span>;
-        <span class="self">self</span>.<span class="ident">help</span>(<span class="bool-val">false</span>, <span class="ident">about</span>, <span class="ident">spec_vals</span>, <span class="ident">next_line_help</span>, <span class="ident">longest</span>)
+        <span class="self">self</span>.<span class="ident">help</span>(<span class="prelude-val">None</span>, <span class="ident">about</span>, <span class="ident">spec_vals</span>, <span class="ident">next_line_help</span>, <span class="ident">longest</span>)
     }
 
     <span class="kw">fn</span> <span class="ident">sc_spec_vals</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">a</span>: <span class="kw-2">&amp;</span><span class="ident">Command</span>) -&gt; <span class="ident">String</span> {
@@ -2084,6 +2235,7 @@
 }
 
 <span class="kw">const</span> <span class="ident">TAB</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;    &quot;</span>;
+<span class="kw">const</span> <span class="ident">TAB_WIDTH</span>: <span class="ident">usize</span> <span class="op">=</span> <span class="number">4</span>;
 
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">enum</span> <span class="ident">HelpWriter</span><span class="op">&lt;</span><span class="lifetime">&#39;writer</span><span class="op">&gt;</span> {
     <span class="ident">Normal</span>(<span class="kw-2">&amp;</span><span class="lifetime">&#39;writer</span> <span class="kw-2">mut</span> <span class="kw">dyn</span> <span class="ident">Write</span>),
