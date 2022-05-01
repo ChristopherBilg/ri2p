@@ -6,9 +6,9 @@ license-file = "LICENSE.md"
 authors = ["AUTHORS.md"]
 readme = "README.md"
 edition = "2021"
-homepage = "https://ri2p.com/"
+homepage = "https://chrisbilger.com/ri2p"
 repository = "https://github.com/ChristopherBilg/ri2p"
-documentation = "https://ri2p.com"
+documentation = "https://chrisbilger.com/ri2p"
 
 [[bin]]
 name = "ri2p"
