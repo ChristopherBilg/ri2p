@@ -1,4 +1,4 @@
-# [ARCHIVED - May of 2022] ri2p
+# ri2p
 
 Rust implementation of the i2p client/server/router protocols
 
