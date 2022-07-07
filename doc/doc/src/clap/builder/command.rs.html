@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/clap-3.2.6/src/builder/command.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>command.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><script defer src="../../../main.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/clap-3.2.8/src/builder/command.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>command.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Regular.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../FiraSans-Medium.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Regular.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceSerif4-Bold.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../SourceCodePro-Semibold.ttf.woff2"><link rel="stylesheet" type="text/css" href="../../../normalize.css"><link rel="stylesheet" type="text/css" href="../../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../../ayu.css" disabled><link rel="stylesheet" type="text/css" href="../../../dark.css" disabled><link rel="stylesheet" type="text/css" href="../../../light.css" id="themeStyle"><script id="default-settings" ></script><script src="../../../storage.js"></script><script src="../../../crates.js"></script><script defer src="../../../main.js"></script><script defer src="../../../source-script.js"></script><script defer src="../../../source-files.js"></script>
     <noscript><link rel="stylesheet" href="../../../noscript.css"></noscript><link rel="alternate icon" type="image/png" href="../../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../../favicon-32x32.png"><link rel="icon" type="image/svg+xml" href="../../../favicon.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button><a class="sidebar-logo" href="../../../clap/index.html"><div class="logo-container"><img src="https://raw.githubusercontent.com/clap-rs/clap/master/assets/clap.png" alt="logo"></div>
         </a><h2 class="location"></h2>
     </nav>
@@ -5114,6 +5114,55 @@
 <span id="5107">5107</span>
 <span id="5108">5108</span>
 <span id="5109">5109</span>
+<span id="5110">5110</span>
+<span id="5111">5111</span>
+<span id="5112">5112</span>
+<span id="5113">5113</span>
+<span id="5114">5114</span>
+<span id="5115">5115</span>
+<span id="5116">5116</span>
+<span id="5117">5117</span>
+<span id="5118">5118</span>
+<span id="5119">5119</span>
+<span id="5120">5120</span>
+<span id="5121">5121</span>
+<span id="5122">5122</span>
+<span id="5123">5123</span>
+<span id="5124">5124</span>
+<span id="5125">5125</span>
+<span id="5126">5126</span>
+<span id="5127">5127</span>
+<span id="5128">5128</span>
+<span id="5129">5129</span>
+<span id="5130">5130</span>
+<span id="5131">5131</span>
+<span id="5132">5132</span>
+<span id="5133">5133</span>
+<span id="5134">5134</span>
+<span id="5135">5135</span>
+<span id="5136">5136</span>
+<span id="5137">5137</span>
+<span id="5138">5138</span>
+<span id="5139">5139</span>
+<span id="5140">5140</span>
+<span id="5141">5141</span>
+<span id="5142">5142</span>
+<span id="5143">5143</span>
+<span id="5144">5144</span>
+<span id="5145">5145</span>
+<span id="5146">5146</span>
+<span id="5147">5147</span>
+<span id="5148">5148</span>
+<span id="5149">5149</span>
+<span id="5150">5150</span>
+<span id="5151">5151</span>
+<span id="5152">5152</span>
+<span id="5153">5153</span>
+<span id="5154">5154</span>
+<span id="5155">5155</span>
+<span id="5156">5156</span>
+<span id="5157">5157</span>
+<span id="5158">5158</span>
 </pre><pre class="rust"><code><span class="attribute">#![<span class="ident">allow</span>(<span class="ident">deprecated</span>)]</span>
 
 <span class="comment">// Std</span>
@@ -5387,6 +5436,50 @@
         }
 
         <span class="self">self</span>.<span class="ident">args</span>.<span class="ident">push</span>(<span class="ident">f</span>(<span class="ident">a</span>));
+        <span class="self">self</span>
+    }
+
+    <span class="doccomment">/// Allows one to mutate a [`Command`] after it&#39;s been added as a subcommand.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This can be useful for modifying auto-generated arguments of nested subcommands with</span>
+    <span class="doccomment">/// [`Command::mut_arg`].</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// # Examples</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ```rust</span>
+    <span class="doccomment">/// # use clap::Command;</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// let mut cmd = Command::new(&quot;foo&quot;)</span>
+    <span class="doccomment">///         .subcommand(Command::new(&quot;bar&quot;))</span>
+    <span class="doccomment">///         .mut_subcommand(&quot;bar&quot;, |subcmd| subcmd.disable_help_flag(true));</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// let res = cmd.try_get_matches_from_mut(vec![&quot;foo&quot;, &quot;bar&quot;, &quot;--help&quot;]);</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// // Since we disabled the help flag on the &quot;bar&quot; subcommand, this should err.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// assert!(res.is_err());</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// let res = cmd.try_get_matches_from_mut(vec![&quot;foo&quot;, &quot;bar&quot;]);</span>
+    <span class="doccomment">/// assert!(res.is_ok());</span>
+    <span class="doccomment">/// ```</span>
+    <span class="attribute">#[<span class="ident">must_use</span>]</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">mut_subcommand</span><span class="op">&lt;</span><span class="ident">T</span>, <span class="ident">F</span><span class="op">&gt;</span>(<span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">subcmd_id</span>: <span class="ident">T</span>, <span class="ident">f</span>: <span class="ident">F</span>) -&gt; <span class="self">Self</span>
+    <span class="kw">where</span>
+        <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="ident">App</span><span class="op">&lt;</span><span class="lifetime">&#39;help</span><span class="op">&gt;</span>) -&gt; <span class="ident">App</span><span class="op">&lt;</span><span class="lifetime">&#39;help</span><span class="op">&gt;</span>,
+        <span class="ident">T</span>: <span class="ident">Into</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;help</span> <span class="ident">str</span><span class="op">&gt;</span>,
+    {
+        <span class="kw">let</span> <span class="ident">subcmd_id</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="ident">subcmd_id</span>.<span class="ident">into</span>();
+        <span class="kw">let</span> <span class="ident">id</span> <span class="op">=</span> <span class="ident">Id::from</span>(<span class="ident">subcmd_id</span>);
+
+        <span class="kw">let</span> <span class="ident">pos</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">subcommands</span>.<span class="ident">iter</span>().<span class="ident">position</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">id</span> <span class="op">==</span> <span class="ident">id</span>);
+
+        <span class="kw">let</span> <span class="ident">subcmd</span> <span class="op">=</span> <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">idx</span>) <span class="op">=</span> <span class="ident">pos</span> {
+            <span class="self">self</span>.<span class="ident">subcommands</span>.<span class="ident">remove</span>(<span class="ident">idx</span>)
+        } <span class="kw">else</span> {
+            <span class="ident">App::new</span>(<span class="ident">subcmd_id</span>)
+        };
+
+        <span class="self">self</span>.<span class="ident">subcommands</span>.<span class="ident">push</span>(<span class="ident">f</span>(<span class="ident">subcmd</span>));
         <span class="self">self</span>
     }
 
@@ -10222,6 +10315,11 @@ To change `help`s short, call `cmd.arg(Arg::new(\&quot;help\&quot;)...)`.&quot;<
         (<span class="prelude-val">Some</span>(<span class="ident">first</span>), <span class="prelude-val">Some</span>(<span class="ident">second</span>)) =&gt; <span class="prelude-val">Some</span>((<span class="ident">first</span>, <span class="ident">second</span>)),
         <span class="kw">_</span> =&gt; <span class="prelude-val">None</span>,
     }
+}
+
+<span class="attribute">#[<span class="ident">test</span>]</span>
+<span class="kw">fn</span> <span class="ident">check_auto_traits</span>() {
+    <span class="macro">static_assertions::assert_impl_all!</span>(<span class="ident">Command</span>: <span class="ident">Send</span>, <span class="ident">Sync</span>, <span class="ident">Unpin</span>);
 }
 </code></pre></div>
 </section><section id="search" class="content hidden"></section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-current-crate="clap" data-themes="ayu,dark,light" data-resource-suffix="" data-rustdoc-version="1.61.0 (fe5b13d68 2022-05-18)" ></div>
