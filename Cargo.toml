@@ -14,9 +14,9 @@ documentation = "https://chrisbilger.com/ri2p/"
 name = "ri2p"
 
 [dependencies]
-clap = { version = "3.2.8", features = ["derive"] }
+clap = { version = "3.2.23", features = ["derive"] }
 env_logger = "0.10.0"
 log = "0.4.17"
-serde = "1.0.139"
-serde_derive = "1.0.139"
-toml = "0.5.9"
+serde = "1.0.152"
+serde_derive = "1.0.152"
+toml = "0.5.11"
