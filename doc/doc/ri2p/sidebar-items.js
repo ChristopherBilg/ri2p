@@ -1,1 +1,1 @@
-initSidebarItems({"fn":[["main",""]],"mod":[["daemon",""],["netdb",""]]});
+window.SIDEBAR_ITEMS = {"fn":[["main",""]],"mod":[["daemon",""],["netdb",""]]};

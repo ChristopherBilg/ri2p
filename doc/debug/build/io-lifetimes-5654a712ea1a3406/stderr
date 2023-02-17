@@ -1,0 +1,26 @@
+error[E0554]: `#![feature]` may not be used on the stable release channel
+ --> <anon>:1:12
+  |
+1 | #![feature(wasi_ext)]
+  |            ^^^^^^^^
+
+error[E0635]: unknown feature `wasi_ext`
+ --> <anon>:1:12
+  |
+1 | #![feature(wasi_ext)]
+  |            ^^^^^^^^
+
+error: aborting due to 2 previous errors
+
+Some errors have detailed explanations: E0554, E0635.
+For more information about an error, try `rustc --explain E0554`.
+warning: function `foo` is never used
+ --> <anon>:1:10
+  |
+1 | const fn foo() { panic!() }
+  |          ^^^
+  |
+  = note: `#[warn(dead_code)]` on by default
+
+warning: 1 warning emitted
+

@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["config",""],["daemon",""],["program_arguments",""]]});
+window.SIDEBAR_ITEMS = {"mod":[["config",""],["daemon",""],["program_arguments",""]]};

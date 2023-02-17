@@ -1,1 +1,1 @@
-initSidebarItems({"struct":[["NetDB",""]]});
+window.SIDEBAR_ITEMS = {"struct":[["NetDB",""]]};

@@ -1,1 +1,1 @@
-initSidebarItems({"mod":[["netdb",""]]});
+window.SIDEBAR_ITEMS = {"mod":[["netdb",""]]};
