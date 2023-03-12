@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/clap_derive-3.2.18/src/derives/into_app.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>into_app.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-6827029ac823cab7.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../../static.files/light-ebce58d0a40c3431.css"><link rel="stylesheet" disabled href="../../../static.files/dark-f23faae4a2daf9a6.css"><link rel="stylesheet" disabled href="../../../static.files/ayu-8af5e100b21cd173.css"><script id="default-settings" ></script><script src="../../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../../static.files/source-script-5cf2e01a42cc9858.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-c55e1eb52e1886b4.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../clap_derive/index.html">
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `/home/runner/.cargo/registry/src/github.com-1ecc6299db9ec823/clap_derive-4.0.21/src/derives/into_app.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>into_app.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-6827029ac823cab7.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../../static.files/light-ebce58d0a40c3431.css"><link rel="stylesheet" disabled href="../../../static.files/dark-f23faae4a2daf9a6.css"><link rel="stylesheet" disabled href="../../../static.files/ayu-8af5e100b21cd173.css"><script id="default-settings" ></script><script src="../../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../../static.files/source-script-5cf2e01a42cc9858.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-c55e1eb52e1886b4.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"></nav><main><div class="width-limiter"><nav class="sub"><a class="sub-logo-container" href="../../../clap_derive/index.html">
                         <img src="https://raw.githubusercontent.com/clap-rs/clap/master/assets/clap.png" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
@@ -90,34 +90,6 @@
 <a href="#89" id="89">89</a>
 <a href="#90" id="90">90</a>
 <a href="#91" id="91">91</a>
-<a href="#92" id="92">92</a>
-<a href="#93" id="93">93</a>
-<a href="#94" id="94">94</a>
-<a href="#95" id="95">95</a>
-<a href="#96" id="96">96</a>
-<a href="#97" id="97">97</a>
-<a href="#98" id="98">98</a>
-<a href="#99" id="99">99</a>
-<a href="#100" id="100">100</a>
-<a href="#101" id="101">101</a>
-<a href="#102" id="102">102</a>
-<a href="#103" id="103">103</a>
-<a href="#104" id="104">104</a>
-<a href="#105" id="105">105</a>
-<a href="#106" id="106">106</a>
-<a href="#107" id="107">107</a>
-<a href="#108" id="108">108</a>
-<a href="#109" id="109">109</a>
-<a href="#110" id="110">110</a>
-<a href="#111" id="111">111</a>
-<a href="#112" id="112">112</a>
-<a href="#113" id="113">113</a>
-<a href="#114" id="114">114</a>
-<a href="#115" id="115">115</a>
-<a href="#116" id="116">116</a>
-<a href="#117" id="117">117</a>
-<a href="#118" id="118">118</a>
-<a href="#119" id="119">119</a>
 </pre><pre class="rust"><code><span class="comment">// Copyright 2018 Guillaume Pinot (@TeXitoi) &lt;texitoi@texitoi.eu&gt;,
 // Kevin Knapp (@kbknapp) &lt;kbknapp@gmail.com&gt;, and
 // Ana Hobden (@hoverbear) &lt;operator@hoverbear.org&gt;
@@ -132,35 +104,17 @@
 // commit#ea76fa1b1b273e65e3b0b1046643715b49bec51f which is licensed under the
 // MIT/Apache 2.0 license.
 
-</span><span class="kw">use </span>std::env;
-
-<span class="kw">use </span>proc_macro2::{Span, TokenStream};
+</span><span class="kw">use </span>proc_macro2::{Span, TokenStream};
 <span class="kw">use </span>quote::quote;
-<span class="kw">use </span>syn::{Attribute, Generics, Ident};
+<span class="kw">use </span>syn::{Generics, Ident};
 
-<span class="kw">use crate</span>::{
-    attrs::{Attrs, Name, DEFAULT_CASING, DEFAULT_ENV_CASING},
-    utils::Sp,
-};
+<span class="kw">use </span><span class="kw">crate</span>::item::Item;
 
-<span class="kw">pub fn </span>gen_for_struct(
-    struct_name: <span class="kw-2">&amp;</span>Ident,
-    generics: <span class="kw-2">&amp;</span>Generics,
-    attrs: <span class="kw-2">&amp;</span>[Attribute],
-) -&gt; TokenStream {
-    <span class="kw">let </span>app_name = env::var(<span class="string">&quot;CARGO_PKG_NAME&quot;</span>).ok().unwrap_or_default();
-
-    <span class="kw">let </span>attrs = Attrs::from_struct(
-        Span::call_site(),
-        attrs,
-        Name::Assigned(<span class="macro">quote!</span>(#app_name)),
-        Sp::call_site(DEFAULT_CASING),
-        Sp::call_site(DEFAULT_ENV_CASING),
-    );
-    <span class="kw">let </span>name = attrs.cased_name();
-    <span class="kw">let </span>app_var = Ident::new(<span class="string">&quot;__clap_app&quot;</span>, Span::call_site());
-
+<span class="kw">pub fn </span>gen_for_struct(item: <span class="kw-2">&amp;</span>Item, item_name: <span class="kw-2">&amp;</span>Ident, generics: <span class="kw-2">&amp;</span>Generics) -&gt; TokenStream {
     <span class="kw">let </span>(impl_generics, ty_generics, where_clause) = generics.split_for_impl();
+
+    <span class="kw">let </span>name = item.cased_name();
+    <span class="kw">let </span>app_var = Ident::new(<span class="string">&quot;__clap_app&quot;</span>, Span::call_site());
 
     <span class="kw">let </span>tokens = <span class="macro">quote! </span>{
         <span class="attr">#[allow(dead_code, unreachable_code, unused_variables, unused_braces)]
@@ -176,14 +130,13 @@
             clippy::suspicious_else_formatting,
         )]
         #[deny(clippy::correctness)]
-        #[allow(deprecated)]
-        </span><span class="kw">impl </span>#impl_generics clap::CommandFactory <span class="kw">for </span>#struct_name #ty_generics #where_clause {
-            <span class="kw">fn </span>into_app&lt;<span class="lifetime">&#39;b</span>&gt;() -&gt; clap::Command&lt;<span class="lifetime">&#39;b</span>&gt; {
+        </span><span class="kw">impl </span>#impl_generics clap::CommandFactory <span class="kw">for </span>#item_name #ty_generics #where_clause {
+            <span class="kw">fn </span>command&lt;<span class="lifetime">&#39;b</span>&gt;() -&gt; clap::Command {
                 <span class="kw">let </span>#app_var = clap::Command::new(#name);
                 &lt;<span class="self">Self </span><span class="kw">as </span>clap::Args&gt;::augment_args(#app_var)
             }
 
-            <span class="kw">fn </span>into_app_for_update&lt;<span class="lifetime">&#39;b</span>&gt;() -&gt; clap::Command&lt;<span class="lifetime">&#39;b</span>&gt; {
+            <span class="kw">fn </span>command_for_update&lt;<span class="lifetime">&#39;b</span>&gt;() -&gt; clap::Command {
                 <span class="kw">let </span>#app_var = clap::Command::new(#name);
                 &lt;<span class="self">Self </span><span class="kw">as </span>clap::Args&gt;::augment_args_for_update(#app_var)
             }
@@ -193,20 +146,11 @@
     tokens
 }
 
-<span class="kw">pub fn </span>gen_for_enum(enum_name: <span class="kw-2">&amp;</span>Ident, generics: <span class="kw-2">&amp;</span>Generics, attrs: <span class="kw-2">&amp;</span>[Attribute]) -&gt; TokenStream {
-    <span class="kw">let </span>app_name = env::var(<span class="string">&quot;CARGO_PKG_NAME&quot;</span>).ok().unwrap_or_default();
-
-    <span class="kw">let </span>attrs = Attrs::from_struct(
-        Span::call_site(),
-        attrs,
-        Name::Assigned(<span class="macro">quote!</span>(#app_name)),
-        Sp::call_site(DEFAULT_CASING),
-        Sp::call_site(DEFAULT_ENV_CASING),
-    );
-    <span class="kw">let </span>name = attrs.cased_name();
-    <span class="kw">let </span>app_var = Ident::new(<span class="string">&quot;__clap_app&quot;</span>, Span::call_site());
-
+<span class="kw">pub fn </span>gen_for_enum(item: <span class="kw-2">&amp;</span>Item, item_name: <span class="kw-2">&amp;</span>Ident, generics: <span class="kw-2">&amp;</span>Generics) -&gt; TokenStream {
     <span class="kw">let </span>(impl_generics, ty_generics, where_clause) = generics.split_for_impl();
+
+    <span class="kw">let </span>name = item.cased_name();
+    <span class="kw">let </span>app_var = Ident::new(<span class="string">&quot;__clap_app&quot;</span>, Span::call_site());
 
     <span class="macro">quote! </span>{
         <span class="attr">#[allow(dead_code, unreachable_code, unused_variables, unused_braces)]
@@ -222,15 +166,15 @@
             clippy::suspicious_else_formatting,
         )]
         #[deny(clippy::correctness)]
-        </span><span class="kw">impl </span>#impl_generics clap::CommandFactory <span class="kw">for </span>#enum_name #ty_generics #where_clause {
-            <span class="kw">fn </span>into_app&lt;<span class="lifetime">&#39;b</span>&gt;() -&gt; clap::Command&lt;<span class="lifetime">&#39;b</span>&gt; {
-                <span class="attr">#[allow(deprecated)]
-                </span><span class="kw">let </span>#app_var = clap::Command::new(#name)
-                    .setting(clap::AppSettings::SubcommandRequiredElseHelp);
+        </span><span class="kw">impl </span>#impl_generics clap::CommandFactory <span class="kw">for </span>#item_name #ty_generics #where_clause {
+            <span class="kw">fn </span>command&lt;<span class="lifetime">&#39;b</span>&gt;() -&gt; clap::Command {
+                <span class="kw">let </span>#app_var = clap::Command::new(#name)
+                    .subcommand_required(<span class="bool-val">true</span>)
+                    .arg_required_else_help(<span class="bool-val">true</span>);
                 &lt;<span class="self">Self </span><span class="kw">as </span>clap::Subcommand&gt;::augment_subcommands(#app_var)
             }
 
-            <span class="kw">fn </span>into_app_for_update&lt;<span class="lifetime">&#39;b</span>&gt;() -&gt; clap::Command&lt;<span class="lifetime">&#39;b</span>&gt; {
+            <span class="kw">fn </span>command_for_update&lt;<span class="lifetime">&#39;b</span>&gt;() -&gt; clap::Command {
                 <span class="kw">let </span>#app_var = clap::Command::new(#name);
                 &lt;<span class="self">Self </span><span class="kw">as </span>clap::Subcommand&gt;::augment_subcommands_for_update(#app_var)
             }
@@ -238,4 +182,4 @@
     }
 }
 </code></pre></div>
-</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="clap_derive" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.0 (fc594f156 2023-01-24)" data-search-js="search-444266647c4dba98.js" data-settings-js="settings-bebeae96e00e4617.js" data-settings-css="settings-af96d9e2fc13e081.css" ></div></body></html>
+</section></div></main><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="clap_derive" data-themes="" data-resource-suffix="" data-rustdoc-version="1.67.1 (d5a82bbd2 2023-02-07)" data-search-js="search-444266647c4dba98.js" data-settings-js="settings-bebeae96e00e4617.js" data-settings-css="settings-af96d9e2fc13e081.css" ></div></body></html>
